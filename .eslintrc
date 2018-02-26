@@ -1,10 +1,25 @@
 {
-  "env": {
-    "browser": true,
-  },
   "extends": [
     "airbnb"
   ],
+  "plugins": [
+    "react",
+  ],
+  "env": {
+    "browser": true,
+    "es6": true,
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "modules": true,
+      "jsx": true
+    }
+  },
+  "settings": {
+    "react": {
+      "pragma": "h"
+    }
+  },
   "rules": {
     "semi": ["error", "never"],
     "new-cap": "off",
@@ -12,6 +27,7 @@
     "no-confusing-arrow": "off",
     "import/no-extraneous-dependencies": "off",
     "import/prefer-default-export": "off",
-    "import/newline-after-import": "off"
+    "import/newline-after-import": "off",
+    "react/prop-types": "off",
   },
 }

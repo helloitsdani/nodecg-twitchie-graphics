@@ -1,12 +1,6 @@
-/* global nodecg */
+import createReplicant from './utils/createReplicant'
 
-import { BUNDLE_NAME } from './constants'
-
-const createReplicant = name => (
-  nodecg.Replicant(name, BUNDLE_NAME)
-)
-
-const defaultReplicants = {
+const replicants = {
   channel: {
     info: createReplicant('channel.info'),
     followers: createReplicant('channel.followers'),
@@ -20,8 +14,4 @@ const defaultReplicants = {
   },
 }
 
-export {
-  createReplicant,
-}
-
-export default defaultReplicants
+export default replicants

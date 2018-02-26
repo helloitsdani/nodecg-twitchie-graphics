@@ -2,7 +2,7 @@
   "name": "nodecg-twitchie-graphics",
   "version": "0.0.1",
   "description": "A Preact and Redux base for you to build graphics on when using Twitchie!",
-  "main": "lib/index.js",
+  "main": "twitchie/index.js",
   "author": {
     "name": "dani quinn sexton",
     "email": "dani@glitter.tech",
@@ -29,13 +29,19 @@
   "homepage": "https://github.com/helloitsdan/nodecg-twitchie-graphics#readme",
   "dependencies": {
     "ava": "^0.19.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.5.1",
     "eslint": "^3.5.0",
     "eslint-config-airbnb": "^12.0.0",
     "eslint-plugin-import": "^1.16.0",
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.3.0",
     "husky": "^0.13.3",
-    "lint-staged": "^3.5.0"
+    "lint-staged": "^3.5.0",
+    "preact": "^8.2.7",
+    "preact-redux": "^2.0.3",
+    "redux": "^3.7.2"
   },
   "nodecg": {
     "compatibleRange": "~0.8.5"
