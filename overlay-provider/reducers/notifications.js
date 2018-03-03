@@ -1,8 +1,6 @@
 let currentNotificationId = 0
 
-const defaultState = {
-  queue: [],
-}
+const defaultState = []
 
 const createNotificationFilter = idToRemove => notification => (
   notification.id !== idToRemove
@@ -25,26 +23,20 @@ export default (
     case 'QUEUE_NOTIFICATION':
       currentNotificationId += 1
 
-      return {
+      return [
         ...state,
-        queue: [
-          ...state.queue,
-          {
-            id: currentNotificationId,
-            user,
-            topic,
-            scale,
-            message,
-          },
-        ],
-      }
+        {
+          id: currentNotificationId,
+          user,
+          topic,
+          scale,
+          message,
+        },
+      ]
     case 'CLEAR_NOTIFICATION':
-      return {
-        ...state,
-        queue: state.queue.filter(
-          createNotificationFilter(id)
-        ),
-      }
+      return state.filter(
+        createNotificationFilter(id)
+      )
     default:
       return state
   }
