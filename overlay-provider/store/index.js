@@ -9,9 +9,11 @@ const createOverlayStore = (reducers, middleware) => {
   const store = createStore(
     reducers,
     composeEnhancers(
-      applyMiddleware(
-        ...middleware,
-      )
+      middleware
+        ? applyMiddleware(
+          ...[].concat(middleware),
+        )
+        : applyMiddleware()
     ),
   )
 
