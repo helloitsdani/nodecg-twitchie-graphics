@@ -1,36 +1,42 @@
 import { h } from 'preact'
 import { Provider } from 'preact-redux'
+import { combineReducers } from 'redux'
 
-import reducers from './reducers'
+import * as defaultReducers from './reducers'
 import createOverlayStore from './store'
-import bindDispatchToEvents from './api'
+import bindDispatchToAPIEvents from './api'
 
 const OverlayProvider = ({
-  store,
-  children,
-}) => (
-  <Provider store={store}>
-    <div id="overlay">
-      {children}
-    </div>
-  </Provider>
-)
-
-const DefaultOverlayProvider = ({
+  reducers,
+  callback,
+  middleware,
   children,
 }) => {
-  const store = createOverlayStore(reducers)
-  bindDispatchToEvents(store.dispatch)
+  const currentReducers = reducers ? {
+    ...defaultReducers,
+    ...reducers,
+  } : {
+    ...defaultReducers,
+  }
+
+  const store = createOverlayStore(
+    combineReducers(currentReducers),
+    middleware,
+  )
+
+  bindDispatchToAPIEvents(store)
+
+  if (callback) {
+    callback(store)
+  }
 
   return (
-    <OverlayProvider store={store}>
-      {children}
-    </OverlayProvider>
+    <Provider store={store}>
+      <div id="overlay">
+        {children}
+      </div>
+    </Provider>
   )
-}
-
-export {
-  DefaultOverlayProvider,
 }
 
 export default OverlayProvider

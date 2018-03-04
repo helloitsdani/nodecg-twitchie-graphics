@@ -5,7 +5,9 @@ import brb from './brb'
 import followers from './followers'
 import subscribers from './subscribers'
 
-export default (dispatch) => {
+const bindDispatchToAPIEvents = ({
+  dispatch,
+}) => {
   nowPlaying(dispatch)
   social(dispatch)
   brb(dispatch)
@@ -13,3 +15,5 @@ export default (dispatch) => {
   followers(dispatch)
   subscribers(dispatch)
 }
+
+export default bindDispatchToAPIEvents
