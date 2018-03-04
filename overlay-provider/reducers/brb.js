@@ -1,3 +1,5 @@
+import * as actions from '../actions/brb'
+
 const defaultState = {
   away: false,
   message: undefined,
@@ -14,7 +16,7 @@ export default (
   },
 ) => {
   switch (type) {
-    case 'BRB_UPDATE':
+    case actions.BRB_UPDATE:
       return {
         away: away || false,
         message,

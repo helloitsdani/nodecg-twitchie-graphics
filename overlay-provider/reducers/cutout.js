@@ -1,3 +1,5 @@
+import * as actions from '../actions/cutout'
+
 const defaultState = {
   top: 0,
   left: 0,
@@ -20,7 +22,7 @@ export default (
   },
 ) => {
   switch (type) {
-    case 'CUTOUT_UPDATE':
+    case actions.CUTOUT_UPDATE:
       return {
         top: top || state.top,
         left: left || state.left,

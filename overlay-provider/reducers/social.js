@@ -1,3 +1,5 @@
+import * as actions from '../actions/social'
+
 const defaultState = {
   twitch: '',
   twitter: '',
@@ -14,7 +16,7 @@ export default (
   }
 ) => {
   switch (type) {
-    case 'SOCIAL_UPDATE':
+    case actions.SOCIAL_UPDATE:
       return {
         ...state,
         [service]: username,

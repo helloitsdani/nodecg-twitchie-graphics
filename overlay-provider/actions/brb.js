@@ -1,5 +1,7 @@
+const BRB_UPDATE = 'brb/UPDATE'
+
 const updateBRB = (away, message) => ({
-  type: 'BRB_UPDATE',
+  type: BRB_UPDATE,
   payload: {
     away,
     message,
@@ -7,5 +9,6 @@ const updateBRB = (away, message) => ({
 })
 
 export {
+  BRB_UPDATE,
   updateBRB,
 }

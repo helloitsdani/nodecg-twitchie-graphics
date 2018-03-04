@@ -1,3 +1,5 @@
+import * as actions from '../actions/nowPlaying'
+
 const defaultState = 'Nothing...yet!'
 
 export default (
@@ -10,7 +12,7 @@ export default (
   },
 ) => {
   switch (type) {
-    case 'NOW_PLAYING_UPDATE':
+    case actions.NOW_PLAYING_UPDATE:
       return game || defaultState
     default:
       return state

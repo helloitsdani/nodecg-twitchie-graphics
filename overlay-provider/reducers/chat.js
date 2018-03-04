@@ -1,3 +1,5 @@
+import * as actions from '../actions/chat'
+
 let id = 0
 
 const defaultState = {
@@ -21,7 +23,7 @@ export default (
   }
 ) => {
   switch (type) {
-    case 'CHAT_MESSAGE':
+    case actions.CHAT_MESSAGE:
       id += 1
 
       return {
@@ -35,14 +37,14 @@ export default (
           },
         ],
       }
-    case 'CLEAR_USER_MESSAGES':
+    case actions.CLEAR_USER_MESSAGES:
       return {
         ...state,
         messages: state.messages.filter(
           createNaughtyUserFilter(user)
         ),
       }
-    case 'CHAT_CHANNEL_JOIN':
+    case actions.CHAT_CHANNEL_JOIN:
       return (channel !== state.channel)
         ? {
           channel,

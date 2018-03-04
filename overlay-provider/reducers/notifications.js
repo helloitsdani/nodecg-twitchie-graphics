@@ -1,3 +1,5 @@
+import * as actions from '../actions/notifications'
+
 let currentNotificationId = 0
 
 const defaultState = []
@@ -20,7 +22,7 @@ export default (
   },
 ) => {
   switch (type) {
-    case 'QUEUE_NOTIFICATION':
+    case actions.QUEUE_NOTIFICATION:
       currentNotificationId += 1
 
       return [
@@ -33,7 +35,7 @@ export default (
           message,
         },
       ]
-    case 'CLEAR_NOTIFICATION':
+    case actions.CLEAR_NOTIFICATION:
       return state.filter(
         createNotificationFilter(id)
       )

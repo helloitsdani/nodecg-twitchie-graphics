@@ -87,11 +87,13 @@ class Notifications extends Component {
     // preact always passes children as an array, unlike react
     const renderer = children[0]
 
-    return renderer({
-      id,
-      notification,
-      visible,
-    })
+    return notification
+      ? renderer({
+        id,
+        notification,
+        visible,
+      })
+      : null
   }
 }
 

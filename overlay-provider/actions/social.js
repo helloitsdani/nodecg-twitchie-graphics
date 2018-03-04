@@ -1,5 +1,7 @@
+const SOCIAL_UPDATE = 'social/UPDATE'
+
 const updateSocialLinks = (service, username) => ({
-  type: 'SOCIAL_UPDATE',
+  type: SOCIAL_UPDATE,
   payload: {
     service,
     username,
@@ -7,5 +9,6 @@ const updateSocialLinks = (service, username) => ({
 })
 
 export {
+  SOCIAL_UPDATE,
   updateSocialLinks,
 }
