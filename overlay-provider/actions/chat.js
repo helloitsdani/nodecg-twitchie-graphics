@@ -2,11 +2,12 @@ const CHAT_MESSAGE = 'chat/MESSAGE'
 const CHAT_JOIN_CHANNEL = 'chat/JOIN_CHANNEL'
 const CHAT_CLEAR_USER_MESSAGES = 'chat/CLEAR_USER_MESSAGES'
 
-const getMessage = (user, message) => ({
+const getMessage = (user, message, topic) => ({
   type: CHAT_MESSAGE,
   payload: {
     user,
     message,
+    topic,
   },
 })
 

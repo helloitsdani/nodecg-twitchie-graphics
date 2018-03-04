@@ -18,6 +18,7 @@ export default (
     payload: {
       user,
       message,
+      topic,
       channel,
     } = {},
   }
@@ -34,6 +35,7 @@ export default (
             id,
             user,
             message,
+            topic,
           },
         ],
       }
@@ -44,7 +46,7 @@ export default (
           createNaughtyUserFilter(user)
         ),
       }
-    case actions.CHAT_CHANNEL_JOIN:
+    case actions.CHAT_JOIN_CHANNEL:
       return (channel !== state.channel)
         ? {
           channel,
