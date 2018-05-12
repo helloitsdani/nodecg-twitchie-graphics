@@ -45,7 +45,7 @@
     "redux": "^3.7.2"
   },
   "nodecg": {
-    "compatibleRange": "~0.8.5"
+    "compatibleRange": ">=0.8.5"
   },
   "ava": {
     "files": "{overlay-provider,twitchie}/**/__tests__/*.js",
