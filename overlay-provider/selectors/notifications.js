@@ -1,8 +1,8 @@
-const getNotifications = state => (
+const getNotifications = (state) => (
   state.notifications
 )
 
-const getNextNotification = state => (
+const getNextNotification = (state) => (
   getNotifications(state)[0]
 )
 
