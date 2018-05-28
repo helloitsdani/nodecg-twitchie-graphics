@@ -4,7 +4,7 @@ let currentNotificationId = 0
 
 const defaultState = []
 
-const createNotificationFilter = idToRemove => notification => (
+const createNotificationFilter = (idToRemove) => (notification) => (
   notification.id !== idToRemove
 )
 

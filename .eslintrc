@@ -23,11 +23,11 @@
   },
   "rules": {
     "semi": ["error", "never"],
+    "arrow-parens": ["error", "always"],
     "new-cap": "off",
     "capitalized-comments": "off",
     "import/no-extraneous-dependencies": "off",
     "import/prefer-default-export": "off",
-    "import/newline-after-import": "off",
     "react/prop-types": "off",
   },
 }

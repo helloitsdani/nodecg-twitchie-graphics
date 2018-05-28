@@ -1,6 +1,6 @@
 const CUTOUT_UPDATE = 'cutout/UPDATE'
 
-const updateCutout = coords => ({
+const updateCutout = (coords) => ({
   type: CUTOUT_UPDATE,
   payload: coords,
 })

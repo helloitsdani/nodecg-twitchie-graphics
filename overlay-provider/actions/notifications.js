@@ -16,7 +16,7 @@ const queueNotification = ({
   },
 })
 
-const clearNotification = id => ({
+const clearNotification = (id) => ({
   type: CLEAR_NOTIFICATION,
   payload: {
     id,

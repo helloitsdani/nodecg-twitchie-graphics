@@ -1,4 +1,4 @@
-const getUsername = user => (
+const getUsername = (user) => (
   user.display_name || user.name
 )
 

@@ -1,6 +1,6 @@
 const NOW_PLAYING_UPDATE = 'nowPlaying/UPDATE'
 
-const updateNowPlaying = game => ({
+const updateNowPlaying = (game) => ({
   type: NOW_PLAYING_UPDATE,
   payload: {
     game,

@@ -7,7 +7,7 @@ const defaultState = {
   messages: [],
 }
 
-const createNaughtyUserFilter = user => message => (
+const createNaughtyUserFilter = (user) => (message) => (
   user.id !== message.user.id
 )
 

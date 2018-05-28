@@ -11,14 +11,14 @@ const getMessage = (user, message, topic) => ({
   },
 })
 
-const joinChannel = channel => ({
+const joinChannel = (channel) => ({
   type: CHAT_JOIN_CHANNEL,
   payload: {
     channel,
   },
 })
 
-const clearUserMessages = user => ({
+const clearUserMessages = (user) => ({
   type: CHAT_CLEAR_USER_MESSAGES,
   payload: {
     user,
