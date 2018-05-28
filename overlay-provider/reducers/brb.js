@@ -3,6 +3,7 @@ import * as actions from '../actions/brb'
 const defaultState = {
   away: false,
   message: undefined,
+  timer: undefined,
 }
 
 export default (
@@ -12,14 +13,16 @@ export default (
     payload: {
       away,
       message,
+      timer,
     } = {},
   },
 ) => {
   switch (type) {
     case actions.BRB_UPDATE:
       return {
-        away: away || false,
+        away: !!away,
         message,
+        timer,
       }
     default:
       return state

@@ -6,12 +6,17 @@ const isAway = (state) => (
   getBRB(state).isAway
 )
 
-const getBRBMessage = (state) => (
+const getMessage = (state) => (
   getBRB(state).message
+)
+
+const getTimer = (state) => (
+  getBRB(state).timer
 )
 
 export {
   getBRB,
   isAway,
-  getBRBMessage,
+  getMessage,
+  getTimer,
 }
