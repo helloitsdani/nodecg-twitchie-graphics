@@ -1,4 +1,4 @@
-import nowPlaying from './nowPlaying'
+import channel from './channel'
 import social from './social'
 import brb from './brb'
 import chat from './chat'
@@ -8,7 +8,7 @@ import notifications from './notifications'
 export {
   brb,
   social,
-  nowPlaying,
+  channel,
   chat,
   cutout,
   notifications,

@@ -1,4 +1,4 @@
-import nowPlaying from './nowPlaying'
+import channel from './channel'
 import social from './social'
 import chat from './chat'
 import brb from './brb'
@@ -8,7 +8,7 @@ import subscribers from './subscribers'
 const bindDispatchToAPIEvents = ({
   dispatch,
 }) => {
-  nowPlaying(dispatch)
+  channel(dispatch)
   social(dispatch)
   brb(dispatch)
   chat(dispatch)
