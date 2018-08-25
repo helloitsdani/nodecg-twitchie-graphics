@@ -45,7 +45,23 @@
     "redux": "^3.7.2"
   },
   "nodecg": {
-    "compatibleRange": ">=0.8.5"
+    "compatibleRange": ">=0.8.5",
+    "dashboardPanels": [
+      {
+        "name": "brb",
+        "title": "BRB!",
+        "width": 2,
+        "file": "brb.html",
+        "headerColor": "#9f9bbd"
+      },
+      {
+        "name": "timer",
+        "title": "Timer!",
+        "width": 2,
+        "file": "timer.html",
+        "headerColor": "#9f9bbd"
+      }
+    ]
   },
   "ava": {
     "files": "{overlay-provider,twitchie}/**/__tests__/*.js",
