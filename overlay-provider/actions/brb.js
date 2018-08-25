@@ -1,11 +1,10 @@
 const BRB_UPDATE = 'brb/UPDATE'
 
-const updateBRB = (away, message, timer) => ({
+const updateBRB = (away, message) => ({
   type: BRB_UPDATE,
   payload: {
     away,
     message,
-    timer,
   },
 })
 

@@ -4,6 +4,7 @@ import brb from './brb'
 import chat from './chat'
 import cutout from './cutout'
 import notifications from './notifications'
+import timer from './timer'
 
 export {
   brb,
@@ -12,4 +13,5 @@ export {
   chat,
   cutout,
   notifications,
+  timer,
 }

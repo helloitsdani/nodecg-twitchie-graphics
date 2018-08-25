@@ -10,13 +10,8 @@ const getMessage = (state) => (
   getBRB(state).message
 )
 
-const getTimer = (state) => (
-  getBRB(state).timer
-)
-
 export {
   getBRB,
   isAway,
   getMessage,
-  getTimer,
 }

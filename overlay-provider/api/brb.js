@@ -1,14 +1,8 @@
-import { createReplicant } from '../../twitchie'
+import twitchie from '../../twitchie'
+
 import { updateBRB } from '../actions/brb'
 
 export default (dispatch) => {
-  const brb = createReplicant('brb', {
-    defaultValue: {
-      away: false,
-      message: undefined,
-    },
-  })
-
   const dispatchUpdateBRB = ({
     away = false,
     message,
@@ -16,7 +10,7 @@ export default (dispatch) => {
     dispatch(updateBRB(away, message))
   }
 
-  brb.on(
+  twitchie.brb.on(
     'change',
     dispatchUpdateBRB,
   )
