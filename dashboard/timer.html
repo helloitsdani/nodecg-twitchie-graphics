@@ -7,6 +7,7 @@
   <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/iron-pages/iron-pages.html">
   <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/iron-flex-layout/iron-flex-layout.html">
   <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/iron-icons/iron-icons.html">
+  <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/iron-icons/image-icons.html">
   <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/paper-checkbox/paper-checkbox.html">
   <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/paper-input/paper-input.html">
   <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/paper-button/paper-button.html">
@@ -36,6 +37,20 @@
       .c-timer-group paper-input {
         @apply --layout-flex;
         margin: 0 1rem 0 0;
+      }
+
+      .c-timer-countdown {
+        @apply --layout-horizontal;
+        @apply --layout-center-center;
+
+        margin: 0 auto 0.5rem;
+        font-size: 2em;
+      }
+
+      .c-timer-countdown iron-icon {
+        --iron-icon-width: 1em;
+        --iron-icon-height: 1em;
+        margin: 0 0.5em 0 0;
       }
     </style>
   </custom-style>
@@ -85,7 +100,15 @@
     </div>
 
     <div name="timer.manage">
-      manage timer
+      <div class="c-timer-countdown">
+        <iron-icon
+          icon="image:timer"
+        ></iron-icon>
+
+        <output id="timer.countdown">
+          00:00:00
+        </output>
+      </div>
 
       <paper-button
         raised
