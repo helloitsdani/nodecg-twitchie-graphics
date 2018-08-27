@@ -4,18 +4,91 @@
 <head>
   <meta charset="UTF-8">
 
+  <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/iron-pages/iron-pages.html">
+  <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/iron-flex-layout/iron-flex-layout.html">
+  <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/iron-icons/iron-icons.html">
   <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/paper-checkbox/paper-checkbox.html">
   <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/paper-input/paper-input.html">
   <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/paper-button/paper-button.html">
 </head>
 
 <body>
-  <paper-input label="Timer" id="timer.newValue"></paper-input>
+  <custom-style>
+    <style is="custom-style">
+      paper-button {
+        @apply --layout-horizontal;
+        @apply --layout-center;
 
-  <paper-button class="update" raised id="timer.start">
-    Start new timer
-  </paper-button>
+        background: #6441A4;
+        color: #fff;
+        text-align: center;
+      }
 
+      paper-button iron-icon {
+        margin: 0 0.5em 0 0;
+      }
+
+      .c-timer-group {
+        @apply --layout-horizontal;
+        margin: 0 auto 0.5rem;
+      }
+
+      .c-timer-group paper-input {
+        @apply --layout-flex;
+        margin: 0 1rem 0 0;
+      }
+    </style>
+  </custom-style>
+
+  <iron-pages
+    selected="timer.create"
+    attr-for-selected="name"
+    role="main"
+  >
+    <div name="timer.create">
+      <div class="c-timer-group">
+        <paper-input
+          label="Minutes"
+          type="number"
+          pattern="[0-9]"
+          allowed-pattern="[0-9]"
+          auto-validate
+          min="0"
+          value="10"
+          id="timer.minutes"
+        ></paper-input>
+
+        <paper-input
+          label="Seconds"
+          type="number"
+          pattern="[0-9]"
+          allowed-pattern="[0-9]"
+          auto-validate
+          min="0"
+          max="59"
+          value="0"
+          id="timer.seconds"
+        ></paper-input>
+    </div>
+
+      <paper-button
+        raised
+        id="timer.start"
+      >
+        <iron-icon
+          icon="icons:alarm-add"
+        ></iron-icon>
+
+        Start new timer
+      </paper-button>
+    </div>
+
+    <div name="timer.manage">
+      manage timer
+    </div>
+  </iron-pages>
+
+  <script src="/bundles/nodecg-twitchie-graphics/bower_components/moment/moment.js"></script>
   <script src="scripts/timer.js"></script>
 </body>
 </html>

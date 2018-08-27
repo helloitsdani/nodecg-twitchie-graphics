@@ -52,14 +52,14 @@
         "title": "BRB!",
         "width": 2,
         "file": "brb.html",
-        "headerColor": "#9f9bbd"
+        "headerColor": "#6441A4"
       },
       {
         "name": "timer",
         "title": "Timer!",
         "width": 2,
         "file": "timer.html",
-        "headerColor": "#9f9bbd"
+        "headerColor": "#6441A4"
       }
     ]
   },
