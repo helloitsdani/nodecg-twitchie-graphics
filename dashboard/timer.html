@@ -41,6 +41,7 @@
   </custom-style>
 
   <iron-pages
+    id="timer.pages"
     selected="timer.create"
     attr-for-selected="name"
     role="main"
@@ -69,7 +70,7 @@
           value="0"
           id="timer.seconds"
         ></paper-input>
-    </div>
+      </div>
 
       <paper-button
         raised
@@ -85,6 +86,17 @@
 
     <div name="timer.manage">
       manage timer
+
+      <paper-button
+        raised
+        id="timer.cancel"
+      >
+        <iron-icon
+          icon="icons:alarm-off"
+        ></iron-icon>
+
+        Cancel timer
+      </paper-button>
     </div>
   </iron-pages>
 

@@ -1,11 +1,12 @@
-/* global nodecg */
+/* global nodecg, NodeCG */
 
-(function () {
+(async () => {
   const state = document.getElementById('brb.away')
   const message = document.getElementById('brb.message')
   const updateButton = document.getElementById('brb.update')
 
   const brb = nodecg.Replicant('brb', 'nodecg-twitchie')
+  await NodeCG.waitForReplicants(brb)
 
   brb.on(
     'change',
@@ -20,8 +21,8 @@
     () => {
       brb.value = {
         away: state.checked,
-        message: message.value
+        message: message.value,
       }
     }
   )
-}())
+})()
