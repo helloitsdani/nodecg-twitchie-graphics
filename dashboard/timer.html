@@ -31,7 +31,7 @@
 
       .c-timer-group {
         @apply --layout-horizontal;
-        margin: 0 auto 0.5rem;
+        margin: 0 auto 1rem;
       }
 
       .c-timer-group paper-input {
@@ -39,11 +39,15 @@
         margin: 0 1rem 0 0;
       }
 
+      .c-timer-target {
+        margin: 0 auto 1rem;
+      }
+
       .c-timer-countdown {
         @apply --layout-horizontal;
         @apply --layout-center-center;
 
-        margin: 0 auto 0.5rem;
+        margin: 0 auto 1rem;
         font-size: 2em;
       }
 
@@ -61,7 +65,7 @@
     attr-for-selected="name"
     role="main"
   >
-    <div name="timer.create">
+    <section name="timer.create">
       <div class="c-timer-group">
         <paper-input
           label="Minutes"
@@ -97,9 +101,17 @@
 
         Start new timer
       </paper-button>
-    </div>
+    </section>
 
-    <div name="timer.manage">
+    <section name="timer.manage">
+      <div class="c-timer-target">
+        The timer has been set for
+
+        <output id="timer.target">
+          00:00
+        </output>.
+      </div>
+
       <div class="c-timer-countdown">
         <iron-icon
           icon="image:timer"
@@ -112,15 +124,15 @@
 
       <paper-button
         raised
-        id="timer.cancel"
+        id="timer.clear"
       >
         <iron-icon
           icon="icons:alarm-off"
         ></iron-icon>
 
-        Cancel timer
+        Clear timer
       </paper-button>
-    </div>
+    </section>
   </iron-pages>
 
   <script src="/bundles/nodecg-twitchie-graphics/bower_components/moment/moment.js"></script>

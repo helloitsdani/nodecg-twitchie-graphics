@@ -2,11 +2,59 @@
 
 (async () => {
   const pages = document.getElementById('timer.pages')
-  const startButton = document.getElementById('timer.start')
-  const cancelButton = document.getElementById('timer.cancel')
+
+  const inputs = {
+    minutes: document.getElementById('timer.minutes'),
+    seconds: document.getElementById('timer.seconds'),
+  }
+
+  const elements = {
+    startButton: document.getElementById('timer.start'),
+    clearButton: document.getElementById('timer.clear'),
+    countdown: document.getElementById('timer.countdown'),
+    target: document.getElementById('timer.target'),
+  }
 
   const timer = nodecg.Replicant('timer', 'nodecg-twitchie')
   await NodeCG.waitForReplicants(timer)
+
+  let tickTimeout
+
+  const getCountdownText = (diff) => {
+    if (diff <= 0) {
+      return 'Finished!'
+    }
+
+    const diffMoment = moment.utc(diff)
+
+    return diffMoment.format(
+      diffMoment.hours() > 0
+        ? 'H:mm:ss'
+        : 'm:ss'
+    )
+  }
+
+  const createCountdownTicket = (target) => {
+    const targetMoment = moment.utc(target)
+    elements.target.innerHTML = targetMoment.local().format('LTS, on LL')
+
+    return () => {
+      const now = moment.utc()
+      const diff = targetMoment.diff(now)
+
+      elements.countdown.innerHTML = getCountdownText(diff)
+    }
+  }
+
+  const startCountdownTo = (target) => {
+    const tick = createCountdownTicket(target)
+    tick()
+
+    return setInterval(
+      tick,
+      1 * 1000,
+    )
+  }
 
   timer.on(
     'change',
@@ -17,15 +65,28 @@
     }
   )
 
-  startButton.addEventListener(
-    'click',
-    () => {
-      const newTimer = moment().add(10, 'minutes')
-      timer.value = newTimer.unix()
+  timer.on(
+    'change',
+    (newVal) => {
+      if (newVal) {
+        tickTimeout = startCountdownTo(newVal)
+      } else {
+        clearTimeout(tickTimeout)
+      }
     }
   )
 
-  cancelButton.addEventListener(
+  elements.startButton.addEventListener(
+    'click',
+    () => {
+      const newTimer = moment()
+      newTimer.add(inputs.minutes.value, 'minutes')
+      newTimer.add(inputs.seconds.value, 'seconds')
+      timer.value = newTimer.utc()
+    }
+  )
+
+  elements.clearButton.addEventListener(
     'click',
     () => {
       timer.value = null
