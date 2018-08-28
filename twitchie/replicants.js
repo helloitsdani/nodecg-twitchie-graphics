@@ -12,6 +12,19 @@ const replicants = {
     badges: createReplicant('chat.badges'),
     cheermotes: createReplicant('chat.cheermotes'),
   },
+
+  brb: createReplicant('brb', {
+    defaultValue: {
+      away: false,
+      message: undefined,
+    },
+  }),
+
+  timer: createReplicant('timer'),
+
+  social: {
+    twitter: createReplicant('social.twitter'),
+  },
 }
 
 export default replicants

@@ -13,7 +13,6 @@ export default (
     payload: {
       away,
       message,
-      timer,
     } = {},
   },
 ) => {
@@ -22,7 +21,6 @@ export default (
       return {
         away: !!away,
         message,
-        timer,
       }
     default:
       return state

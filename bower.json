@@ -1,0 +1,12 @@
+{
+  "name": "nodecg-twitchie-graphics",
+  "version": "0.0.1",
+  "dependencies": {
+    "paper-button": "^2.1.1",
+    "paper-checkbox": "^2.0.4",
+    "iron-pages": "PolymerElements/iron-pages#^2.1.1",
+    "moment": "~2.18.0",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#^2.0.3",
+    "iron-icons": "PolymerElements/iron-icons#^2.1.1"
+  }
+}

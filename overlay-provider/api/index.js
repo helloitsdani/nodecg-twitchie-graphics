@@ -4,6 +4,7 @@ import chat from './chat'
 import brb from './brb'
 import followers from './followers'
 import subscribers from './subscribers'
+import timer from './timer'
 
 const bindDispatchToAPIEvents = ({
   dispatch,
@@ -14,6 +15,7 @@ const bindDispatchToAPIEvents = ({
   chat(dispatch)
   followers(dispatch)
   subscribers(dispatch)
+  timer(dispatch)
 }
 
 export default bindDispatchToAPIEvents

@@ -4,6 +4,7 @@ import * as cutout from './cutout'
 import * as notifications from './notifications'
 import * as channel from './channel'
 import * as social from './social'
+import * as timer from './timer'
 
 export {
   brb,
@@ -12,4 +13,5 @@ export {
   notifications,
   channel,
   social,
+  timer,
 }

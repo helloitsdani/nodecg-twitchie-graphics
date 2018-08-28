@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/iron-pages/iron-pages.html">
+  <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/iron-flex-layout/iron-flex-layout.html">
+  <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/iron-icons/iron-icons.html">
+  <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/iron-icons/image-icons.html">
+  <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/paper-checkbox/paper-checkbox.html">
+  <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/paper-input/paper-input.html">
+  <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/paper-button/paper-button.html">
+</head>
+
+<body>
+  <custom-style>
+    <style is="custom-style">
+      paper-button {
+        @apply --layout-horizontal;
+        @apply --layout-center;
+
+        background: #6441A4;
+        color: #fff;
+        text-align: center;
+      }
+
+      paper-button iron-icon {
+        margin: 0 0.5em 0 0;
+      }
+
+      .c-timer-group {
+        @apply --layout-horizontal;
+        margin: 0 auto 1rem;
+      }
+
+      .c-timer-group paper-input {
+        @apply --layout-flex;
+        margin: 0 1rem 0 0;
+      }
+
+      .c-timer-target {
+        margin: 0 auto 1rem;
+      }
+
+      .c-timer-countdown {
+        @apply --layout-horizontal;
+        @apply --layout-center-center;
+
+        margin: 0 auto 1rem;
+        font-size: 2em;
+      }
+
+      .c-timer-countdown iron-icon {
+        --iron-icon-width: 1em;
+        --iron-icon-height: 1em;
+        margin: 0 0.5em 0 0;
+      }
+    </style>
+  </custom-style>
+
+  <iron-pages
+    id="timer.pages"
+    selected="timer.create"
+    attr-for-selected="name"
+    role="main"
+  >
+    <section name="timer.create">
+      <div class="c-timer-group">
+        <paper-input
+          label="Minutes"
+          type="number"
+          pattern="[0-9]"
+          allowed-pattern="[0-9]"
+          auto-validate
+          min="0"
+          value="10"
+          id="timer.minutes"
+        ></paper-input>
+
+        <paper-input
+          label="Seconds"
+          type="number"
+          pattern="[0-9]"
+          allowed-pattern="[0-9]"
+          auto-validate
+          min="0"
+          max="59"
+          value="0"
+          id="timer.seconds"
+        ></paper-input>
+      </div>
+
+      <paper-button
+        raised
+        id="timer.start"
+      >
+        <iron-icon
+          icon="icons:alarm-add"
+        ></iron-icon>
+
+        Start new timer
+      </paper-button>
+    </section>
+
+    <section name="timer.manage">
+      <div class="c-timer-target">
+        The timer has been set for
+
+        <output id="timer.target">
+          00:00
+        </output>.
+      </div>
+
+      <div class="c-timer-countdown">
+        <iron-icon
+          icon="image:timer"
+        ></iron-icon>
+
+        <output id="timer.countdown">
+          00:00:00
+        </output>
+      </div>
+
+      <paper-button
+        raised
+        id="timer.clear"
+      >
+        <iron-icon
+          icon="icons:alarm-off"
+        ></iron-icon>
+
+        Clear timer
+      </paper-button>
+    </section>
+  </iron-pages>
+
+  <script src="/bundles/nodecg-twitchie-graphics/bower_components/moment/moment.js"></script>
+  <script src="scripts/timer.js"></script>
+</body>
+</html>

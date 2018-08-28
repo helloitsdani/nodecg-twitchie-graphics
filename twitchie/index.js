@@ -15,8 +15,6 @@ export {
 }
 
 export default {
-  channel: replicants.channel,
-  stream: replicants.stream,
-  chat: replicants.chat,
+  ...replicants,
   on: listenFor,
 }
