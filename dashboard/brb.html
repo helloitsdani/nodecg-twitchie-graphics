@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
 
-  <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/iron-flex-layout/iron-flex-layout.html">
+  <link href="/bundles/nodecg-twitchie/dashboard/styles/base.css" rel="stylesheet">
+
   <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/iron-icons/iron-icons.html">
   <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/paper-checkbox/paper-checkbox.html">
   <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/paper-input/paper-input.html">
@@ -12,55 +13,35 @@
 </head>
 
 <body>
-  <custom-style>
-    <style is="custom-style">
-      paper-button {
-        @apply --layout-horizontal;
-        @apply --layout-center;
+  <main role="main">
+    <div class="c-field-group">
+      <paper-checkbox
+        label="Away?"
+        id="brb.away"
+      >
+        Away?
+      </paper-checkbox>
+    </div>
 
-        background: #6441A4;
-        color: #fff;
-        text-align: center;
-      }
+    <div class="c-field-group">
+      <paper-input
+        class="c-field-group__field c-flush-input"
+        label="Message"
+        id="brb.message"
+      ></paper-input>
+    </div>
 
-      paper-button iron-icon {
-        margin: 0 0.5em 0 0;
-      }
-
-      .c-brb-group {
-        margin: 0 auto 1rem;
-      }
-
-      .c-brb-group paper-checkbox {
-        --paper-checkbox-size: 1.5em;
-      }
-    </style>
-  </custom-style>
-
-  <div class="c-brb-group">
-    <paper-checkbox
-      label="Away?"
-      id="brb.away"
+    <paper-button
+      raised
+      id="brb.update"
     >
-      Away?
-    </paper-checkbox>
+      <iron-icon
+        icon="icons:done"
+      ></iron-icon>
 
-    <paper-input
-      label="Message"
-      id="brb.message"
-    ></paper-input>
-  </div>
-
-  <paper-button
-    raised
-    id="brb.update"
-  >
-    <iron-icon
-      icon="icons:done"
-    ></iron-icon>
-
-    Update
-  </paper-button>
+      Update
+    </paper-button>
+  </main>
 
   <script src="scripts/brb.js"></script>
 </body>
