@@ -5,30 +5,12 @@
 <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/paper-input/paper-input.html">
 <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/paper-button/paper-button.html">
 
+<link rel="import" href="twitchie-countdown.html">
+
 <dom-module id="twitchie-timer">
   <link href="/bundles/nodecg-twitchie/dashboard/styles/base.css" rel="import" type="css">
 
   <template>
-    <style>
-      .c-timer-target {
-        margin: 0 auto 1rem;
-      }
-
-      .c-timer-countdown {
-        display: flex;
-        flex-flow: row nowrap;
-        align-items: center;
-        justify-content: center;
-
-        margin: 0 auto 1rem;
-        font-size: 2em;
-      }
-
-      .c-timer-countdown iron-icon {
-        margin: 0 0.5em 0 0;
-      }
-    </style>
-
     <iron-pages
       id="pages"
       selected="create"
@@ -73,23 +55,7 @@
       </section>
 
       <section name="manage">
-        <div class="c-timer-target">
-          The timer has been set for
-
-          <output id="target">
-            00:00
-          </output>.
-        </div>
-
-        <div class="c-timer-countdown">
-          <iron-icon
-            icon="image:timer"
-          ></iron-icon>
-
-          <output id="countdown">
-            00:00:00
-          </output>
-        </div>
+        <twitchie-countdown target="[[timer]]"></twitchie-countdown>
 
         <paper-button
           raised
