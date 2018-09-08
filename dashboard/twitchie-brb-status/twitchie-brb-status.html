@@ -4,10 +4,12 @@
 <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/paper-button/paper-button.html">
 
-<dom-module id="twitchie-brb-status">
-  <link href="/bundles/nodecg-twitchie/dashboard/styles/base.css" rel="import" type="css">
+<link rel="import" href="/bundles/nodecg-twitchie/dashboard/twitchie-styles/twitchie-styles.html">
 
+<dom-module id="twitchie-brb-status">
   <template>
+    <style include="twitchie-styles"></style>
+
     <div class="c-field-group">
       <paper-checkbox
         label="Away?"

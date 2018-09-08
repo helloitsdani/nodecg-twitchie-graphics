@@ -5,12 +5,13 @@
 <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/paper-input/paper-input.html">
 <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/paper-button/paper-button.html">
 
+<link rel="import" href="/bundles/nodecg-twitchie/dashboard/twitchie-styles/twitchie-styles.html">
 <link rel="import" href="twitchie-countdown.html">
 
 <dom-module id="twitchie-timer">
-  <link href="/bundles/nodecg-twitchie/dashboard/styles/base.css" rel="import" type="css">
-
   <template>
+    <style include="twitchie-styles"></style>
+
     <iron-pages
       id="pages"
       selected="create"

@@ -1,19 +1,5 @@
 /* global nodecg, NodeCG, moment, Polymer */
 
-const getCountdownText = (diff) => {
-  if (diff <= 0) {
-    return 'Finished!'
-  }
-
-  const diffMoment = moment.utc(diff)
-
-  return diffMoment.format(
-    diffMoment.hours() > 0
-      ? 'H:mm:ss'
-      : 'm:ss'
-  )
-}
-
 class TwitchieCountdown extends Polymer.Element {
   static get is() {
     return 'twitchie-countdown'
@@ -26,13 +12,31 @@ class TwitchieCountdown extends Polymer.Element {
         value: 0,
         observer: 'updateTimer',
       },
+      finishedText: {
+        type: String,
+        value: 'Finished!',
+      },
     }
+  }
+
+  getCountdownText(diff) {
+    if (diff <= 0) {
+      return this.finishedText
+    }
+
+    const diffMoment = moment.utc(diff)
+
+    return diffMoment.format(
+      diffMoment.hours() > 0
+        ? 'H:mm:ss'
+        : 'm:ss'
+    )
   }
 
   tick() {
     const now = moment.utc()
     const diff = this.targetMoment.diff(now)
-    this.countdownText = getCountdownText(diff)
+    this.countdownText = this.getCountdownText(diff)
   }
 
   updateTimer(newTarget) {

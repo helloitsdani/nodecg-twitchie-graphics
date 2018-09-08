@@ -2,10 +2,12 @@
 <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/iron-icons/image-icons.html">
 
-<dom-module id="twitchie-countdown">
-  <link href="/bundles/nodecg-twitchie/dashboard/styles/base.css" rel="import" type="css">
+<link rel="import" href="/bundles/nodecg-twitchie/dashboard/twitchie-styles/twitchie-styles.html">
 
+<dom-module id="twitchie-countdown">
   <template>
+    <style include="twitchie-styles"></style>
+
     <style>
       .c-timer-target {
         margin: 0 auto 1rem;
