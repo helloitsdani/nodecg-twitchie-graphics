@@ -18,12 +18,17 @@ const replicants = {
       away: false,
       message: undefined,
     },
+    persistent: true,
   }),
 
-  timer: createReplicant('timer'),
+  timer: createReplicant('timer', {
+    persistent: true,
+  }),
 
   social: {
-    twitter: createReplicant('social.twitter'),
+    twitter: createReplicant('social.twitter', {
+      persistent: true,
+    }),
   },
 }
 
