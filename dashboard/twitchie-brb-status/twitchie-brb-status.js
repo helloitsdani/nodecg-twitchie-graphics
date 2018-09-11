@@ -1,7 +1,11 @@
 /* global nodecg, NodeCG, moment, Polymer */
 
 (() => {
-  const brb = nodecg.Replicant('brb', 'nodecg-twitchie')
+  const brb = nodecg.Replicant(
+    'brb',
+    'nodecg-twitchie',
+    { persistent: true },
+  )
 
   class TwitchieBRBStatus extends Polymer.Element {
     static get is() {
