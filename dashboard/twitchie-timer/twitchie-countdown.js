@@ -11,7 +11,7 @@
         target: {
           type: Number,
           value: 0,
-          observer: 'updateTimer',
+          observer: 'updateTicker',
         },
         finishedText: {
           type: String,
@@ -20,28 +20,33 @@
       }
     }
 
-    getCountdownText(diff) {
-      if (diff <= 0) {
-        return this.finishedText
-      }
-
-      const diffMoment = moment.utc(diff)
-
-      return diffMoment.format(
-        diffMoment.hours() > 0
-          ? 'H:mm:ss'
-          : 'm:ss'
-      )
-    }
-
     tick() {
       const now = moment.utc()
       const diff = this.targetMoment.diff(now)
-      this.countdownText = this.getCountdownText(diff)
+
+      if (diff <= 0) {
+        clearTimeout(this.tickTimer)
+        this.isFinished = true
+
+        this.countdownText = this.finishedText
+
+        this.dispatchEvent(
+          new CustomEvent('countdown-finished')
+        )
+      } else {
+        const diffMoment = moment.utc(diff)
+
+        this.countdownText = diffMoment.format(
+          diffMoment.hours() > 0
+            ? 'H:mm:ss'
+            : 'm:ss'
+        )
+      }
     }
 
-    updateTimer(newTarget) {
+    updateTicker(newTarget) {
       clearTimeout(this.tickTimer)
+      this.isFinished = false
 
       if (!newTarget) {
         return
@@ -51,9 +56,18 @@
       this.targetText = this.targetMoment.local().format('LTS, on LL')
 
       this.tick()
+
+      if (this.isFinished) {
+        return
+      }
+
       this.tickTimer = setInterval(
         () => this.tick(),
         1 * 1000,
+      )
+
+      this.dispatchEvent(
+        new CustomEvent('countdown-started')
       )
     }
   }

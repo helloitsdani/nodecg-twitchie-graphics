@@ -3,6 +3,21 @@
 (() => {
   const timer = nodecg.Replicant('timer', 'nodecg-twitchie')
 
+  const brb = nodecg.Replicant(
+    'brb',
+    'nodecg-twitchie',
+    { persistent: true },
+  )
+
+  const clearBrb = () => {
+    const { message } = brb.value
+
+    brb.value = {
+      isAway: false,
+      message,
+    }
+  }
+
   class TwitchieTimer extends Polymer.Element {
     static get is() {
       return 'twitchie-timer'
@@ -17,6 +32,10 @@
         seconds: {
           type: Number,
           value: 0,
+        },
+        clearBrbOnComplete: {
+          type: Boolean,
+          value: true,
         },
       }
     }
@@ -43,6 +62,15 @@
           this.$.pages.selected = newVal
             ? 'manage'
             : 'create'
+        }
+      )
+
+      this.$.countdown.addEventListener(
+        'countdown-finished',
+        () => {
+          if (this.clearBrbOnComplete) {
+            clearBrb()
+          }
         }
       )
     }

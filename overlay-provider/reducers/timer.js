@@ -1,17 +1,21 @@
 import * as actions from '../actions/timer'
 
-const defaultState = null
+const defaultState = {
+  target: null,
+}
 
 export default (
   state = defaultState,
   {
     type,
-    payload,
+    payload: {
+      target,
+    } = {},
   },
 ) => {
   switch (type) {
     case actions.TIMER_UPDATE:
-      return payload
+      return target
     case actions.TIMER_CLEAR:
       return defaultState
     default:

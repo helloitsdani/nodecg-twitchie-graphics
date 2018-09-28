@@ -4,6 +4,7 @@
 <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/iron-icons/image-icons.html">
 <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/paper-input/paper-input.html">
 <link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bundles/nodecg-twitchie-graphics/bower_components/paper-checkbox/paper-checkbox.html">
 
 <link rel="import" href="/bundles/nodecg-twitchie/dashboard/twitchie-styles/twitchie-styles.html">
 <link rel="import" href="twitchie-countdown.html">
@@ -56,7 +57,18 @@
       </section>
 
       <section name="manage">
-        <twitchie-countdown target="[[timer]]"></twitchie-countdown>
+        <twitchie-countdown
+          id="countdown"
+          target="[[timer]]"
+        ></twitchie-countdown>
+
+        <div class="c-field-group">
+          <paper-checkbox
+            checked={{clearBrbOnComplete}}
+          >
+            Hide BRB screen when timer finishes?
+          </paper-checkbox>
+        </div>
 
         <paper-button
           raised
