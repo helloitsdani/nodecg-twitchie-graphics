@@ -25,11 +25,9 @@ const replicants = {
     persistent: true,
   }),
 
-  social: {
-    twitter: createReplicant('social.twitter', {
-      persistent: true,
-    }),
-  },
+  social: createReplicant('social', {
+    persistent: true,
+  }),
 }
 
 export default replicants

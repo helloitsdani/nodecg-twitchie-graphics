@@ -1,14 +1,11 @@
 const SOCIAL_UPDATE = 'social/UPDATE'
 
-const updateSocialLinks = (service, username) => ({
+const updateSocialAccounts = (accounts) => ({
   type: SOCIAL_UPDATE,
-  payload: {
-    service,
-    username,
-  },
+  payload: accounts,
 })
 
 export {
   SOCIAL_UPDATE,
-  updateSocialLinks,
+  updateSocialAccounts,
 }

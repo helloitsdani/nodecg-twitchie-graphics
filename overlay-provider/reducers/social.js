@@ -1,26 +1,19 @@
 import * as actions from '../actions/social'
 
-const defaultState = {
-  twitch: '',
-  twitter: '',
-}
+const defaultState = []
 
 export default (
   state = defaultState,
   {
     type,
-    payload: {
-      service,
-      username,
-    } = {},
+    payload: accounts,
   }
 ) => {
   switch (type) {
     case actions.SOCIAL_UPDATE:
-      return {
-        ...state,
-        [service]: username,
-      }
+      return accounts
+        ? [...accounts]
+        : []
     default:
       return state
   }

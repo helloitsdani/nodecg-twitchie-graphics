@@ -1,19 +1,14 @@
 import twitchie from '../../twitchie'
 
-import { updateSocialLinks } from '../actions/social'
+import { updateSocialAccounts } from '../actions/social'
 
 export default (dispatch) => {
-  twitchie.social.twitter.on(
-    'change',
-    (newTwitter) => {
-      dispatch(updateSocialLinks('twitter', newTwitter))
-    }
+  const dispatchSocialAccountsUpdate = (
+    (newAccounts) => dispatch(updateSocialAccounts(newAccounts))
   )
 
-  twitchie.channel.info.on(
+  twitchie.social.on(
     'change',
-    ({ name } = {}) => {
-      dispatch(updateSocialLinks('twitch', name))
-    }
+    dispatchSocialAccountsUpdate,
   )
 }
