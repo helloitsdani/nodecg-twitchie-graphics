@@ -4,6 +4,8 @@ import createReplicant from './utils/createReplicant'
 import getEmote from './utils/getEmote'
 import getCheermote from './utils/getCheermote'
 import getCheermoteFromCurrentSets from './utils/getCheermoteFromCurrentSets'
+import getBadge from './utils/getBadge'
+import getBadgeFromCurrentSets from './utils/getBadgeFromCurrentSets'
 import listenFor from './utils/listenFor'
 
 export {
@@ -12,6 +14,8 @@ export {
   getEmote,
   getCheermote,
   getCheermoteFromCurrentSets,
+  getBadge,
+  getBadgeFromCurrentSets,
 }
 
 export default {
