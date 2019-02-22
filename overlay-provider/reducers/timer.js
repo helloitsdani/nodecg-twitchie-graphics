@@ -1,8 +1,6 @@
 import * as actions from '../actions/timer'
 
-const defaultState = {
-  target: null,
-}
+const defaultState = null
 
 export default (
   state = defaultState,

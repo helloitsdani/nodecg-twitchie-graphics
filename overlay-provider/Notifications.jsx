@@ -42,9 +42,12 @@ class Notifications extends Component {
       return
     }
 
-    this.setState({
-      visible: true,
-    })
+    this.timeout = setTimeout(
+      () => this.setState({
+        visible: true,
+      }),
+      0,
+    )
 
     this.timeout = setTimeout(
       () => this.clearNotification(),
