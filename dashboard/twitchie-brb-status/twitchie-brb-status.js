@@ -1,11 +1,7 @@
 /* global nodecg, NodeCG, moment, Polymer */
 
-(() => {
-  const brb = nodecg.Replicant(
-    'brb',
-    'nodecg-twitchie',
-    { persistent: true },
-  )
+;(() => {
+  const brb = nodecg.Replicant('graphics.brb', 'nodecg-twitchie', { persistent: true })
 
   class TwitchieBRBStatus extends Polymer.Element {
     static get is() {
@@ -36,13 +32,10 @@
       super.ready()
       await NodeCG.waitForReplicants(brb)
 
-      brb.on(
-        'change',
-        (newVal) => {
-          this.isAway = newVal.away
-          this.message = newVal.message
-        }
-      )
+      brb.on('change', newVal => {
+        this.isAway = newVal.away
+        this.message = newVal.message
+      })
     }
   }
 
