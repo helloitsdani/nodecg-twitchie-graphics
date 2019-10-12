@@ -6,8 +6,6 @@ import bindDispatchToAPIEvents from './api'
 import * as defaultReducers from './reducers'
 import createOverlayStore from './store'
 
-import notificationMiddleware from './middleware/notifications'
-
 interface OverlayProviderProps {
   reducers?: Reducer
   callback?: (store: Store) => void
@@ -24,9 +22,7 @@ const OverlayProvider: FunctionComponent<OverlayProviderProps> = ({ reducers, ca
         ...defaultReducers,
       }
 
-  const currentMiddleware: Middleware[] = [notificationMiddleware, ...(middleware || [])]
-
-  const store = createOverlayStore(combineReducers(currentReducers), currentMiddleware)
+  const store = createOverlayStore(combineReducers(currentReducers), middleware || [])
 
   bindDispatchToAPIEvents(store)
 
