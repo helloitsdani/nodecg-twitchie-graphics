@@ -1,13 +1,8 @@
 /* global nodecg, NodeCG, moment, Polymer */
 
-(() => {
-  const timer = nodecg.Replicant('timer', 'nodecg-twitchie')
-
-  const brb = nodecg.Replicant(
-    'brb',
-    'nodecg-twitchie',
-    { persistent: true },
-  )
+;(() => {
+  const timer = nodecg.Replicant('graphics.timer', 'nodecg-twitchie')
+  const brb = nodecg.Replicant('graphics.brb', 'nodecg-twitchie', { persistent: true })
 
   const clearBrb = () => {
     const { message } = brb.value
@@ -55,24 +50,16 @@
       super.ready()
       await NodeCG.waitForReplicants(timer)
 
-      timer.on(
-        'change',
-        (newVal) => {
-          this.timer = newVal
-          this.$.pages.selected = newVal
-            ? 'manage'
-            : 'create'
-        }
-      )
+      timer.on('change', newVal => {
+        this.timer = newVal
+        this.$.pages.selected = newVal ? 'manage' : 'create'
+      })
 
-      this.$.countdown.addEventListener(
-        'countdown-finished',
-        () => {
-          if (this.clearBrbOnComplete) {
-            clearBrb()
-          }
+      this.$.countdown.addEventListener('countdown-finished', () => {
+        if (this.clearBrbOnComplete) {
+          clearBrb()
         }
-      )
+      })
     }
   }
 

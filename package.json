@@ -1,17 +1,15 @@
 {
   "name": "nodecg-twitchie-graphics",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "description": "A Preact and Redux base for you to build graphics on when using Twitchie!",
-  "main": "twitchie/index.js",
+  "main": "lib/index.js",
   "author": {
     "name": "dani quinn sexton",
     "email": "dani@glitter.tech",
     "url": "http://glitter.tech"
   },
   "scripts": {
-    "test": "ava",
-    "lint:js": "eslint \"{overlay-provider,twitchie}/**/*.{js,jsx}\"",
-    "lint": "npm run lint:js",
+    "build": "rollup -c",
     "precommit": "lint-staged",
     "prepush": "npm test"
   },
@@ -28,21 +26,27 @@
   },
   "homepage": "https://github.com/helloitsdan/nodecg-twitchie-graphics#readme",
   "dependencies": {
-    "ava": "^0.19.1",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-env": "^1.5.1",
-    "eslint": "^3.5.0",
-    "eslint-config-airbnb": "^12.0.0",
-    "eslint-plugin-ava": "^4.5.1",
-    "eslint-plugin-import": "^1.16.0",
-    "eslint-plugin-jsx-a11y": "^2.2.2",
-    "eslint-plugin-react": "^6.3.0",
-    "husky": "^0.13.3",
-    "lint-staged": "^3.5.0",
-    "preact": "^8.2.7",
-    "preact-redux": "^2.0.3",
-    "redux": "^3.7.2"
+    "nodecg-twitchie": "git+https://github.com/helloitsdan/nodecg-twitchie.git",
+    "redux": "^4.0.4"
+  },
+  "devDependencies": {
+    "husky": "^3.0.5",
+    "lint-staged": "^9.2.5",
+    "prettier": "^1.15.3",
+    "rollup": "^1.23.1",
+    "rollup-plugin-typescript2": "^0.24.3",
+    "stylelint": "^11.0.0",
+    "stylelint-config-recommended-scss": "^4.0.0",
+    "stylelint-scss": "^3.11.1",
+    "terser-webpack-plugin": "^2.1.0",
+    "ts-loader": "^6.1.2",
+    "tslib": "^1.10.0",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.2",
+    "tslint-config-prettier": "^1.17.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.2.1"
   },
   "nodecg": {
     "compatibleRange": ">=0.8.5",
@@ -69,13 +73,6 @@
         "headerColor": "#6441A4",
         "workspace": "Config"
       }
-    ]
-  },
-  "ava": {
-    "files": "{overlay-provider,twitchie}/**/__tests__/*.js",
-    "babel": "inherit",
-    "require": [
-      "babel-register"
     ]
   }
 }
