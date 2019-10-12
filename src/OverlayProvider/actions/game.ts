@@ -9,7 +9,7 @@ export interface UpdateGameInfoAction {
 
 export type GameActions = UpdateGameInfoAction
 
-export const updateGameInfo = (gameInfo?: GameInfo): GameActions => ({
+export const updateGameInfoAction = (gameInfo?: GameInfo): GameActions => ({
   type: GAME_UPDATE,
   payload: gameInfo,
 })

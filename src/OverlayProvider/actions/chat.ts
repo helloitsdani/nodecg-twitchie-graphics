@@ -33,22 +33,22 @@ export interface ClearChatMessagesAction {
 
 export type ChatActions = GetMessageAction | GetNotificationAction | JoinChannelAction | ClearChatMessagesAction
 
-export const getMessage = (message: ChatActionPayload | ChatMessagePayload): ChatActions => ({
+export const getMessageAction = (message: ChatActionPayload | ChatMessagePayload): ChatActions => ({
   type: CHAT_MESSAGE,
   payload: message,
 })
 
-export const getNotification = (notification: Notification) => ({
+export const getNotificationAction = (notification: Notification) => ({
   type: CHAT_NOTIFICATION,
   payload: notification,
 })
 
-export const joinChannel = (channel: string): ChatActions => ({
+export const joinChannelAction = (channel: string): ChatActions => ({
   type: CHAT_JOIN_CHANNEL,
   payload: channel,
 })
 
-export const clearUserMessages = (modAction: ChatBanPayload | ChatTimeoutPayload): ChatActions => ({
+export const clearUserMessagesAction = (modAction: ChatBanPayload | ChatTimeoutPayload): ChatActions => ({
   type: CHAT_CLEAR_USER_MESSAGES,
   payload: modAction,
 })

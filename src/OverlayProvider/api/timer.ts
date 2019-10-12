@@ -1,15 +1,15 @@
 import { Dispatch } from 'redux'
 
 import twitchie from '../../twitchie'
-import { clearTimer, updateTimer } from '../actions/timer'
+import { clearTimerAction, updateTimerAction } from '../actions/timer'
 
 export default (dispatch: Dispatch) => {
   twitchie.graphics.timer.on('change', newTimer => {
     if (!newTimer) {
-      dispatch(clearTimer())
+      dispatch(clearTimerAction())
       return
     }
 
-    dispatch(updateTimer(newTimer))
+    dispatch(updateTimerAction(newTimer))
   })
 }

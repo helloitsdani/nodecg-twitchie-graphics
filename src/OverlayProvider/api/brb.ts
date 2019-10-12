@@ -1,7 +1,7 @@
 import twitchie from '../../twitchie'
 
 import { Dispatch } from 'redux'
-import { updateBRB } from '../actions/brb'
+import { updateBRBAction } from '../actions/brb'
 
 export default (dispatch: Dispatch) => {
   twitchie.graphics.brb.on('change', status => {
@@ -9,6 +9,6 @@ export default (dispatch: Dispatch) => {
       return
     }
 
-    dispatch(updateBRB(status))
+    dispatch(updateBRBAction(status))
   })
 }

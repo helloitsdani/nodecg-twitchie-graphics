@@ -14,11 +14,11 @@ export interface TimerClearAction {
 
 export type TimerActions = TimerUpdateAction | TimerClearAction
 
-export const updateTimer = (target: string): TimerActions => ({
+export const updateTimerAction = (target: string): TimerActions => ({
   type: TIMER_UPDATE,
   payload: target,
 })
 
-export const clearTimer = (): TimerActions => ({
+export const clearTimerAction = (): TimerActions => ({
   type: TIMER_CLEAR,
 })

@@ -1,7 +1,7 @@
 import twitchie, { ChatActionPayload, ChatBanPayload, ChatMessagePayload, ChatTimeoutPayload } from 'nodecg-twitchie'
 import { Dispatch } from 'redux'
 
-import { clearUserMessages, getMessage, joinChannel } from '../actions/chat'
+import { clearUserMessagesAction, getMessageAction, joinChannelAction } from '../actions/chat'
 
 export default (dispatch: Dispatch) => {
   twitchie.channel.id.on('change', (channel, oldChannel) => {
@@ -13,15 +13,15 @@ export default (dispatch: Dispatch) => {
       return
     }
 
-    dispatch(joinChannel(channel))
+    dispatch(joinChannelAction(channel))
   })
 
   const dispatchClearUserMessage = (modAction: ChatBanPayload | ChatTimeoutPayload) => {
-    dispatch(clearUserMessages(modAction))
+    dispatch(clearUserMessagesAction(modAction))
   }
 
   const dispatchChatMessage = (message: ChatActionPayload | ChatMessagePayload) => {
-    dispatch(getMessage(message))
+    dispatch(getMessageAction(message))
   }
 
   twitchie.on('chat.action', dispatchChatMessage)

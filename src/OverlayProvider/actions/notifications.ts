@@ -15,12 +15,12 @@ export interface ClearNotificationAction {
 
 export type NotificationActions = QueueNotificationAction | ClearNotificationAction
 
-export const queueNotification = (notification: Notification): NotificationActions => ({
+export const queueNotificationAction = (notification: Notification): NotificationActions => ({
   type: QUEUE_NOTIFICATION,
   payload: notification,
 })
 
-export const clearNotification = (id: string): NotificationActions => ({
+export const clearNotificationAction = (id: string): NotificationActions => ({
   type: CLEAR_NOTIFICATION,
   payload: id,
 })

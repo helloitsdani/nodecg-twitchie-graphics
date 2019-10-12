@@ -9,7 +9,7 @@ export interface UpdateSocialAccountsAction {
 
 export type SocialActions = UpdateSocialAccountsAction
 
-export const updateSocialAccounts = (accounts: SocialAccounts): SocialActions => ({
+export const updateSocialAccountsAction = (accounts: SocialAccounts): SocialActions => ({
   type: SOCIAL_UPDATE,
   payload: accounts,
 })

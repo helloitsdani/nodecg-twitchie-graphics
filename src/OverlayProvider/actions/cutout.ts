@@ -9,7 +9,7 @@ export interface UpdateCutoutAction {
 
 export type CutoutActions = UpdateCutoutAction
 
-export const updateCutout = (coords: Cutout): CutoutActions => ({
+export const updateCutoutAction = (coords: Cutout): CutoutActions => ({
   type: CUTOUT_UPDATE,
   payload: coords,
 })

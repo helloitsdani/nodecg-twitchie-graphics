@@ -9,7 +9,7 @@ export interface BRBUpdateAction {
 
 export type BRBActions = BRBUpdateAction
 
-export const updateBRB = (brbStatus: BRBStatus): BRBActions => ({
+export const updateBRBAction = (brbStatus: BRBStatus): BRBActions => ({
   type: BRB_UPDATE,
   payload: brbStatus,
 })
