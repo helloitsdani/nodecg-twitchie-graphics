@@ -4,7 +4,7 @@ export default {
   input: './src/index.ts',
   output: {
     name: 'nodecg-twitchie-graphics',
-    file: './lib/index.js',
+    file: './graphics/index.js',
     format: 'esm',
     sourcemap: true,
   },
