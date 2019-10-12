@@ -1,26 +1,24 @@
 import { Timer } from '../../types'
 
-const TIMER_UPDATE = 'timer/UPDATE'
-const TIMER_CLEAR = 'timer/CLEAR'
+export const TIMER_UPDATE = 'timer/UPDATE'
+export const TIMER_CLEAR = 'timer/CLEAR'
 
-interface TimerUpdateAction {
+export interface TimerUpdateAction {
   type: typeof TIMER_UPDATE
   payload: Timer
 }
 
-interface TimerClearAction {
+export interface TimerClearAction {
   type: typeof TIMER_CLEAR
 }
 
-type TimerActions = TimerUpdateAction | TimerClearAction
+export type TimerActions = TimerUpdateAction | TimerClearAction
 
-const updateTimer = (target: string): TimerActions => ({
+export const updateTimer = (target: string): TimerActions => ({
   type: TIMER_UPDATE,
   payload: target,
 })
 
-const clearTimer = (): TimerActions => ({
+export const clearTimer = (): TimerActions => ({
   type: TIMER_CLEAR,
 })
-
-export { TIMER_UPDATE, TIMER_CLEAR, updateTimer, clearTimer, TimerActions }

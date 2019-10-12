@@ -1,17 +1,15 @@
 import { SocialAccounts } from '../../types'
 
-const SOCIAL_UPDATE = 'social/UPDATE'
+export const SOCIAL_UPDATE = 'social/UPDATE'
 
-interface UpdateSocialAccountsAction {
+export interface UpdateSocialAccountsAction {
   type: typeof SOCIAL_UPDATE
   payload: SocialAccounts
 }
 
-type SocialActions = UpdateSocialAccountsAction
+export type SocialActions = UpdateSocialAccountsAction
 
-const updateSocialAccounts = (accounts: SocialAccounts): SocialActions => ({
+export const updateSocialAccounts = (accounts: SocialAccounts): SocialActions => ({
   type: SOCIAL_UPDATE,
   payload: accounts,
 })
-
-export { SOCIAL_UPDATE, updateSocialAccounts, SocialActions }

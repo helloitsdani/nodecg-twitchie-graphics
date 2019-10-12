@@ -28,3 +28,13 @@ export interface Cutout {
 }
 
 export type Timer = string
+
+export enum ChatMessageTypeWithNotifications {
+  ACTION = 'action',
+  MESSAGE = 'message',
+  NOTIFICATION = 'notification',
+}
+
+export type ChatNotificationMessage = Notification & {
+  type: ChatMessageTypeWithNotifications.NOTIFICATION
+}

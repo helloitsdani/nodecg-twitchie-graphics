@@ -1,28 +1,26 @@
 import { Notification } from '../../types'
 
-const QUEUE_NOTIFICATION = 'notifications/QUEUE_NOTIFICATION'
-const CLEAR_NOTIFICATION = 'notifications/CLEAR_NOTIFICATION'
+export const QUEUE_NOTIFICATION = 'notifications/QUEUE_NOTIFICATION'
+export const CLEAR_NOTIFICATION = 'notifications/CLEAR_NOTIFICATION'
 
-interface QueueNotificationAction {
+export interface QueueNotificationAction {
   type: typeof QUEUE_NOTIFICATION
   payload: Notification
 }
 
-interface ClearNotificationAction {
+export interface ClearNotificationAction {
   type: typeof CLEAR_NOTIFICATION
   payload: string
 }
 
-type NotificationActions = QueueNotificationAction | ClearNotificationAction
+export type NotificationActions = QueueNotificationAction | ClearNotificationAction
 
-const queueNotification = (notification: Notification): NotificationActions => ({
+export const queueNotification = (notification: Notification): NotificationActions => ({
   type: QUEUE_NOTIFICATION,
   payload: notification,
 })
 
-const clearNotification = (id: string): NotificationActions => ({
+export const clearNotification = (id: string): NotificationActions => ({
   type: CLEAR_NOTIFICATION,
   payload: id,
 })
-
-export { QUEUE_NOTIFICATION, CLEAR_NOTIFICATION, queueNotification, clearNotification, NotificationActions }
