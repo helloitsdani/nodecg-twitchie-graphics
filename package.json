@@ -1,8 +1,8 @@
 {
   "name": "nodecg-twitchie-graphics",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A Preact and Redux base for you to build graphics on when using Twitchie!",
-  "main": "graphics/index.js",
+  "main": "lib/index.js",
   "author": {
     "name": "dani quinn sexton",
     "email": "dani@glitter.tech",
@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/helloitsdan/nodecg-twitchie-graphics#readme",
   "dependencies": {
-    "nodecg-twitchie": "2.0.2",
+    "nodecg-twitchie": "2.0.3",
     "redux": "^4.0.4"
   },
   "devDependencies": {
