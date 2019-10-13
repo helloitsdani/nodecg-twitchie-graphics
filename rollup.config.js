@@ -1,10 +1,10 @@
 import typescript from 'rollup-plugin-typescript2'
 
 export default {
-  input: './lib/index.ts',
+  input: './src/index.ts',
   output: {
     name: 'nodecg-twitchie-graphics',
-    file: './graphics/index.js',
+    file: './lib/index.js',
     format: 'esm',
     sourcemap: true,
   },
