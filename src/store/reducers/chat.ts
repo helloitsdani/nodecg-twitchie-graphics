@@ -25,6 +25,19 @@ const createNaughtyUserFilter = (user: string) => (message: ChatMessage | ChatNo
 
 export default (state: ChatState = defaultState, action: actions.ChatActions): ChatState => {
   switch (action.type) {
+    case actions.CHAT_NOTIFICATION:
+      id += 1
+
+      return {
+        ...state,
+        messages: [
+          ...state.messages,
+          {
+            ...action.payload,
+            type: ChatMessageTypeWithNotifications.NOTIFICATION,
+          },
+        ],
+      }
     case actions.CHAT_MESSAGE:
       id += 1
 
