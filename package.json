@@ -1,6 +1,6 @@
 {
   "name": "nodecg-twitchie-graphics",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A Preact and Redux base for you to build graphics on when using Twitchie!",
   "main": "graphics/index.js",
   "author": {
@@ -48,6 +48,14 @@
     "tslint-react": "^3.6.0",
     "typescript": "^3.2.1"
   },
+  "files": [
+    "dashboard",
+    "extension",
+    "graphics"
+  ],
+  "keywords": [
+    "nodecg-bundle"
+  ],
   "nodecg": {
     "compatibleRange": ">=0.8.5",
     "dashboardPanels": [
