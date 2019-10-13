@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/helloitsdan/nodecg-twitchie-graphics#readme",
   "dependencies": {
-    "nodecg-twitchie": "git+https://github.com/helloitsdan/nodecg-twitchie.git",
+    "nodecg-twitchie": "2.0.2",
     "redux": "^4.0.4"
   },
   "devDependencies": {
