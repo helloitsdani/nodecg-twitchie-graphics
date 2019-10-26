@@ -19,12 +19,12 @@ export interface Notification {
 }
 
 export interface Cutout {
-  top: string
-  left: string
-  bottom: string
-  right: string
-  height: string
-  width: string
+  top: number
+  left: number
+  bottom: number
+  right: number
+  height: number
+  width: number
 }
 
 export type Timer = string
