@@ -11,8 +11,8 @@ const panels = {
 const pages = Object.keys(panels).map(
   name =>
     new HtmlWebpackPlugin({
-      filename: name + '.html',
-      template: __dirname + `/src/dashboard/${name}.html`,
+      filename: `${name}.html`,
+      template: path.join(__dirname, 'src', 'dashboard', `panel-template.html`),
       chunks: ['vendor', 'shared', name],
     })
 )
