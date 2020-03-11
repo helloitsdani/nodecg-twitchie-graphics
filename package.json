@@ -84,7 +84,7 @@
         "name": "social",
         "title": "Social Accounts",
         "width": 2,
-        "file": "social-media.html",
+        "file": "social.html",
         "headerColor": "#6441A4",
         "workspace": "Config"
       }
