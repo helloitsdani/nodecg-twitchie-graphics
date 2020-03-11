@@ -16,7 +16,7 @@ const accounts = nodecg.Replicant('graphics.social', 'nodecg-twitchie', {
 class TwitchieSocialMediaEditor extends Polymer.PolymerElement {
   static get template() {
     return Polymer.html`
-    <style include="twitchie-styles"></style>
+    <style include="twitchie-style"></style>
 
     <style>
       .c-account-list {

@@ -11,7 +11,7 @@ const brb = nodecg.Replicant('graphics.brb', 'nodecg-twitchie', { persistent: tr
 class TwitchieBRBStatus extends Polymer.PolymerElement {
   static get template() {
     return Polymer.html`
-    <style include="twitchie-styles"></style>
+    <style include="twitchie-style"></style>
 
     <div class="c-field-group">
       <paper-checkbox checked="{{isAway}}">

@@ -9,8 +9,8 @@
   },
   "homepage": "https://github.com/helloitsdan/nodecg-twitchie-graphics#readme",
   "name": "nodecg-twitchie-graphics",
-  "version": "2.2.0",
-  "main": "lib/index.js",
+  "version": "2.3.0",
+  "dashboard": "dashboard/index.html",
   "author": {
     "name": "dani quinn sexton",
     "email": "dani@glitter.tech",
@@ -19,7 +19,7 @@
   "scripts": {
     "build": "npm run build:dashboard && npm run build:client",
     "build:client": "rollup -c",
-    "build:dashboard": "parcel build src/dashboard/*.html --out-dir dashboard --public-url ./",
+    "build:dashboard": "parcel build src/dashboard/*.html --target dashboard",
     "precommit": "lint-staged",
     "prepush": "npm test"
   },
@@ -38,7 +38,7 @@
     "@rollup/plugin-typescript": "^4.0.0",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
-    "parcel": "^1.12.4",
+    "parcel": "^2.0.0-alpha.3.2",
     "prettier": "^1.19.1",
     "rollup": "^2.0.3",
     "stylelint": "^13.2.1",
@@ -50,7 +50,7 @@
     "tslint": "^6.0.0",
     "tslint-config-airbnb": "^5.11.2",
     "tslint-config-prettier": "^1.18.0",
-    "tslint-react": "^4.2.0",
+    "tslint-eslint-rules": "^5.4.0",
     "typescript": "^3.8.3"
   },
   "files": [
@@ -100,6 +100,13 @@
     "@polymer/paper-button": "^3.0.0",
     "@polymer/paper-checkbox": "^3.0.0",
     "@polymer/paper-input": "^3.0.0",
-    "@polymer/polymer": "^3.3.1"
+    "@polymer/polymer": "^3.3.1",
+    "moment": "^2.24.0"
+  },
+  "targets": {
+    "dashboard": {
+      "distDir": "dashboard",
+      "publicUrl": "./"
+    }
   }
 }

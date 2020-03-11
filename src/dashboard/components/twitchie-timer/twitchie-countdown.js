@@ -6,7 +6,7 @@ import '../twitchie-style/twitchie-style'
 class TwitchieCountdown extends Polymer.PolymerElement {
   static get template() {
     return Polymer.html`
-    <style include="twitchie-styles"></style>
+    <style include="twitchie-style"></style>
 
     <style>
       .c-timer-target {

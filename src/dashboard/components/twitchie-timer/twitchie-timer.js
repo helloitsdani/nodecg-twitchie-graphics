@@ -24,7 +24,7 @@ const clearBrb = () => {
 class TwitchieTimer extends Polymer.PolymerElement {
   static get template() {
     return Polymer.html`
-    <style include="twitchie-styles"></style>
+    <style include="twitchie-style"></style>
 
     <iron-pages id="pages" selected="create" attr-for-selected="name">
       <section name="create">
