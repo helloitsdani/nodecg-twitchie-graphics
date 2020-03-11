@@ -10,7 +10,7 @@
   "homepage": "https://github.com/helloitsdan/nodecg-twitchie-graphics#readme",
   "name": "nodecg-twitchie-graphics",
   "version": "2.3.0",
-  "dashboard": "dashboard/index.html",
+  "browser": "lib/index.js",
   "author": {
     "name": "dani quinn sexton",
     "email": "dani@glitter.tech",
@@ -18,13 +18,13 @@
   },
   "scripts": {
     "build": "npm run build:dashboard && npm run build:client",
-    "build:client": "rollup -c",
-    "build:dashboard": "parcel build src/dashboard/*.html --target dashboard",
+    "build:client": "rollup --config rollup.config.client.js",
+    "build:dashboard": "webpack --config webpack.config.dashboard.js",
     "precommit": "lint-staged",
     "prepush": "npm test"
   },
   "lint-staged": {
-    "{overlay-provider,twitchie}/**/*.{js,jsx}": "eslint"
+    "src/client/**/*.ts": "tslint"
   },
   "license": "MIT",
   "bugs": {
@@ -36,6 +36,8 @@
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^4.0.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^3.2.0",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
     "parcel": "^2.0.0-alpha.3.2",
@@ -51,7 +53,9 @@
     "tslint-config-airbnb": "^5.11.2",
     "tslint-config-prettier": "^1.18.0",
     "tslint-eslint-rules": "^5.4.0",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
   },
   "files": [
     "dashboard",
@@ -99,14 +103,11 @@
     "@polymer/iron-pages": "^3.0.0",
     "@polymer/paper-button": "^3.0.0",
     "@polymer/paper-checkbox": "^3.0.0",
+    "@polymer/paper-icon-button": "^3.0.2",
     "@polymer/paper-input": "^3.0.0",
     "@polymer/polymer": "^3.3.1",
-    "moment": "^2.24.0"
-  },
-  "targets": {
-    "dashboard": {
-      "distDir": "dashboard",
-      "publicUrl": "./"
-    }
+    "moment": "^2.24.0",
+    "nodecg-twitchie": "^2.2.0",
+    "redux": "^4.0.5"
   }
 }
