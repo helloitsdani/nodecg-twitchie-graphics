@@ -1,13 +1,20 @@
-import typescript from 'rollup-plugin-typescript2'
+import typescript from '@rollup/plugin-typescript'
 
 export default {
-  input: './src/index.ts',
+  input: './src/client/index.ts',
   output: {
     name: 'nodecg-twitchie-graphics',
-    file: './lib/index.js',
+    dir: './lib',
     format: 'esm',
     sourcemap: true,
   },
-  external: ['nodecg-twitchie'],
-  plugins: [typescript()],
+  external: ['redux', 'nodecg-twitchie'],
+  plugins: [
+    typescript({
+      declaration: true,
+      declarationDir: 'lib/',
+      rootDir: 'src/client',
+      module: 'es6',
+    }),
+  ],
 }
