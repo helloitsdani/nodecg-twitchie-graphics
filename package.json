@@ -31,7 +31,7 @@
     "url": "https://github.com/helloitsdan/nodecg-twitchie-graphics/issues"
   },
   "peerDependencies": {
-    "nodecg-twitchie": "2.2.0",
+    "nodecg-twitchie": "2.3.0",
     "redux": "^4.0.5"
   },
   "devDependencies": {
@@ -107,7 +107,7 @@
     "@polymer/paper-input": "^3.0.0",
     "@polymer/polymer": "^3.3.1",
     "moment": "^2.24.0",
-    "nodecg-twitchie": "^2.2.0",
+    "nodecg-twitchie": "^2.3.0",
     "redux": "^4.0.5"
   }
 }
