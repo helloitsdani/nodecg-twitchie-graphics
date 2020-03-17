@@ -9,8 +9,9 @@
   },
   "homepage": "https://github.com/helloitsdan/nodecg-twitchie-graphics#readme",
   "name": "nodecg-twitchie-graphics",
-  "version": "2.3.0",
-  "browser": "lib/index.js",
+  "version": "2.4.0",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "author": {
     "name": "dani quinn sexton",
     "email": "dani@glitter.tech",
@@ -31,7 +32,7 @@
     "url": "https://github.com/helloitsdan/nodecg-twitchie-graphics/issues"
   },
   "peerDependencies": {
-    "nodecg-twitchie": "2.3.0",
+    "nodecg-twitchie": "2.4.0",
     "redux": "^4.0.5"
   },
   "devDependencies": {
@@ -107,7 +108,7 @@
     "@polymer/paper-input": "^3.0.0",
     "@polymer/polymer": "^3.3.1",
     "moment": "^2.24.0",
-    "nodecg-twitchie": "^2.3.0",
+    "nodecg-twitchie": "^2.4.0",
     "redux": "^4.0.5"
   }
 }
