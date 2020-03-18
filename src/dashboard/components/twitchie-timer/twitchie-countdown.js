@@ -1,5 +1,8 @@
 import * as Polymer from '@polymer/polymer'
 import '@polymer/iron-icon/iron-icon'
+import '@polymer/iron-icons/iron-icons'
+import '@polymer/iron-icons/image-icons'
+import moment from 'moment'
 
 import '../twitchie-style/twitchie-style'
 

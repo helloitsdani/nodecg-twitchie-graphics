@@ -1,9 +1,11 @@
 import * as Polymer from '@polymer/polymer'
 import '@polymer/iron-icon/iron-icon'
+import '@polymer/iron-icons/iron-icons'
 import '@polymer/iron-pages/iron-pages'
 import '@polymer/paper-button/paper-button'
 import '@polymer/paper-checkbox/paper-checkbox'
 import '@polymer/paper-input/paper-input'
+import moment from 'moment'
 
 import './twitchie-countdown.js'
 
@@ -36,7 +38,6 @@ class TwitchieTimer extends Polymer.PolymerElement {
 
         <paper-button raised="" on-tap="startTimer">
           <iron-icon icon="icons:alarm-add"></iron-icon>
-
           Start new timer
         </paper-button>
       </section>
@@ -52,7 +53,6 @@ class TwitchieTimer extends Polymer.PolymerElement {
 
         <paper-button raised="" on-tap="clearTimer">
           <iron-icon icon="icons:alarm-off"></iron-icon>
-
           Clear timer
         </paper-button>
       </section>

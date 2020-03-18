@@ -1,5 +1,6 @@
 import * as Polymer from '@polymer/polymer'
 import '@polymer/iron-icon/iron-icon'
+import '@polymer/iron-icons/iron-icons'
 import '@polymer/paper-button/paper-button'
 import '@polymer/paper-checkbox/paper-checkbox'
 import '@polymer/paper-input/paper-input'
@@ -25,7 +26,6 @@ class TwitchieBRBStatus extends Polymer.PolymerElement {
 
     <paper-button raised="" on-tap="update">
       <iron-icon icon="icons:done"></iron-icon>
-
       Update
     </paper-button>
 `

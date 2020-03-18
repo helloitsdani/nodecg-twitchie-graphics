@@ -1,5 +1,6 @@
 import * as Polymer from '@polymer/polymer'
 import '@polymer/iron-icon/iron-icon'
+import '@polymer/iron-icons/iron-icons'
 import '@polymer/iron-list/iron-list'
 import '@polymer/paper-icon-button/paper-icon-button'
 import '@polymer/paper-button/paper-button'
@@ -66,7 +67,6 @@ class TwitchieSocialMediaEditor extends Polymer.PolymerElement {
 
     <div class="c-field-group">
       <paper-input label="Service" value="{{newService}}" class="c-field-group__field c-flush-input"></paper-input>
-
       <paper-input label="Username" value="{{newUsername}}" class="c-field-group__field c-flush-input"></paper-input>
     </div>
 
