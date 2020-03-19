@@ -9,7 +9,7 @@
   },
   "homepage": "https://github.com/helloitsdan/nodecg-twitchie-graphics#readme",
   "name": "nodecg-twitchie-graphics",
-  "version": "2.4.1",
+  "version": "2.5.0",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "author": {

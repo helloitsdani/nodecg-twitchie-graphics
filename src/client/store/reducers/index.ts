@@ -5,6 +5,7 @@ import game, { GameState } from './game'
 import notifications, { NotificationsState } from './notifications'
 import social, { SocialState } from './social'
 import timer, { TimerState } from './timer'
+import stream, { StreamState } from './stream'
 
 export interface OverlayState {
   brb: BRBState
@@ -14,6 +15,7 @@ export interface OverlayState {
   notifications: NotificationsState
   social: SocialState
   timer: TimerState
+  stream: StreamState
 }
 
-export { brb, social, game, chat, cutout, notifications, timer }
+export { brb, social, game, chat, cutout, notifications, timer, stream }

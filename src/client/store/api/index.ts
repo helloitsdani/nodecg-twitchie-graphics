@@ -7,6 +7,7 @@ import game from './game'
 import social from './social'
 import subscribers from './subscribers'
 import timer from './timer'
+import stream from './stream'
 
 const bindDispatchToAPIEvents = ({ dispatch }: { dispatch: Dispatch }) => {
   game(dispatch)
@@ -16,6 +17,7 @@ const bindDispatchToAPIEvents = ({ dispatch }: { dispatch: Dispatch }) => {
   followers(dispatch)
   subscribers(dispatch)
   timer(dispatch)
+  stream(dispatch)
 }
 
 export default bindDispatchToAPIEvents
