@@ -7,7 +7,7 @@ let id = 0
 
 export interface ChatState {
   channel: string
-  messages: Array<ChatMessage | ChatNotificationMessage>
+  messages: (ChatMessage | ChatNotificationMessage)[]
 }
 
 const defaultState: ChatState = {
@@ -35,6 +35,7 @@ export default (state: ChatState = defaultState, action: actions.ChatActions): C
           {
             ...action.payload,
             type: ChatMessageTypeWithNotifications.NOTIFICATION,
+            id: `notification-${id}`,
           },
         ],
       }
