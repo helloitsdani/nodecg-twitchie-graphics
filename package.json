@@ -9,7 +9,7 @@
   },
   "homepage": "https://github.com/helloitsdan/nodecg-twitchie-graphics#readme",
   "name": "nodecg-twitchie-graphics",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "author": {
@@ -32,7 +32,7 @@
     "url": "https://github.com/helloitsdan/nodecg-twitchie-graphics/issues"
   },
   "peerDependencies": {
-    "nodecg-twitchie": "^2.4.0",
+    "nodecg-twitchie": "^2.5.1",
     "redux": "^4.0.5"
   },
   "devDependencies": {
@@ -65,7 +65,7 @@
     "lib"
   ],
   "nodecg": {
-    "compatibleRange": ">=1.5.0",
+    "compatibleRange": ">=1.6.1",
     "dashboardPanels": [
       {
         "name": "brb",
@@ -108,7 +108,7 @@
     "@polymer/paper-input": "^3.0.0",
     "@polymer/polymer": "^3.3.1",
     "moment": "^2.24.0",
-    "nodecg-twitchie": "^2.5.0",
+    "nodecg-twitchie": "^2.5.1",
     "redux": "^4.0.5"
   }
 }
