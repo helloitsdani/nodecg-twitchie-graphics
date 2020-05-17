@@ -9,7 +9,7 @@
   },
   "homepage": "https://github.com/helloitsdan/nodecg-twitchie-graphics#readme",
   "name": "nodecg-twitchie-graphics",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "author": {
@@ -32,7 +32,7 @@
     "url": "https://github.com/helloitsdan/nodecg-twitchie-graphics/issues"
   },
   "peerDependencies": {
-    "nodecg-twitchie": "^2.5.1",
+    "nodecg-twitchie": "^2.5.2",
     "redux": "^4.0.5"
   },
   "devDependencies": {
@@ -41,7 +41,6 @@
     "html-webpack-plugin": "^3.2.0",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
-    "parcel": "^2.0.0-alpha.3.2",
     "prettier": "^1.19.1",
     "rollup": "^2.0.3",
     "stylelint": "^13.2.1",
