@@ -16,12 +16,12 @@ export default (state: CutoutState = defaultState, action: actions.CutoutActions
   switch (action.type) {
     case actions.CUTOUT_UPDATE:
       return {
-        top: action.payload.top || state.top,
-        left: action.payload.left || state.left,
-        bottom: action.payload.bottom || state.bottom,
-        right: action.payload.right || state.right,
-        height: action.payload.height || state.height,
-        width: action.payload.width || state.width,
+        top: action.payload.top ?? state.top,
+        left: action.payload.left ?? state.left,
+        bottom: action.payload.bottom ?? state.bottom,
+        right: action.payload.right ?? state.right,
+        height: action.payload.height ?? state.height,
+        width: action.payload.width ?? state.width,
       }
     default:
       return state
