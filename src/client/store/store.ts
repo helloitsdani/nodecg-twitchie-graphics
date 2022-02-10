@@ -1,4 +1,12 @@
-import { applyMiddleware, combineReducers, compose, createStore, Middleware, Reducer, Store } from 'redux'
+import {
+  applyMiddleware,
+  combineReducers,
+  compose,
+  createStore,
+  type Middleware,
+  type Reducer,
+  type Store,
+} from 'redux'
 
 import bindDispatchToAPIEvents from './api'
 import * as defaultReducers from './reducers'
@@ -23,7 +31,7 @@ const createTwitchieStore = (reducers?: Reducer, middleware?: Middleware[]): Sto
 
   const store = createStore(
     combineReducers(currentReducers),
-    composeEnhancers(middleware ? applyMiddleware(...middleware) : applyMiddleware())
+    composeEnhancers(middleware ? applyMiddleware(...middleware) : applyMiddleware()),
   )
 
   bindDispatchToAPIEvents(store)

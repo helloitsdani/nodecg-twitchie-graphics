@@ -1,4 +1,4 @@
-import { StreamInfo } from 'nodecg-twitchie'
+import { type StreamInfo } from 'nodecg-twitchie'
 
 export const STREAM_UPDATE = 'stream/UPDATE'
 

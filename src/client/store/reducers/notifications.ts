@@ -9,6 +9,7 @@ const defaultState: NotificationsState = []
 
 const createNotificationFilter = (idToRemove: string) => (notification: Notification) => notification.id !== idToRemove
 
+// eslint-disable-next-line @typescript-eslint/default-param-last
 export default (state: NotificationsState = defaultState, action: actions.NotificationActions): NotificationsState => {
   switch (action.type) {
     case actions.QUEUE_NOTIFICATION:

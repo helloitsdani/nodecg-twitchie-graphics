@@ -1,4 +1,4 @@
-import { Dispatch } from 'redux'
+import { type Dispatch } from 'redux'
 
 import brb from './brb'
 import chat from './chat'

@@ -1,4 +1,4 @@
-import { GameInfo } from 'nodecg-twitchie'
+import { type GameInfo } from 'nodecg-twitchie'
 
 export const GAME_UPDATE = 'game/UPDATE'
 

@@ -1,3 +1,5 @@
+/* global NodeCG */
+
 import * as Polymer from '@polymer/polymer'
 import '@polymer/iron-icon/iron-icon'
 import '@polymer/iron-icons/iron-icons'
@@ -9,7 +11,7 @@ import '@polymer/paper-input/paper-input'
 
 import '../twitchie-style/twitchie-style'
 
-const accounts = nodecg.Replicant('graphics.social', 'nodecg-twitchie', {
+const accounts = NodeCG.Replicant('graphics.social', 'nodecg-twitchie', {
   defaultValue: [],
   persistent: true,
 })
@@ -116,7 +118,7 @@ class TwitchieSocialMediaEditor extends Polymer.PolymerElement {
         const isSameUser = account.username === accountToRemove.username
 
         return !(isSameService && isSameUser)
-      })
+      }),
     )
   }
 

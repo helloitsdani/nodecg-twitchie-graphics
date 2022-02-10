@@ -1,3 +1,5 @@
+/* global NodeCG */
+
 import * as Polymer from '@polymer/polymer'
 import '@polymer/iron-icon/iron-icon'
 import '@polymer/iron-icons/iron-icons'
@@ -7,7 +9,7 @@ import '@polymer/paper-input/paper-input'
 
 import '../twitchie-style/twitchie-style'
 
-const brb = nodecg.Replicant('graphics.brb', 'nodecg-twitchie', { persistent: true })
+const brb = NodeCG.Replicant('graphics.brb', 'nodecg-twitchie', { persistent: true })
 
 class TwitchieBRBStatus extends Polymer.PolymerElement {
   static get template() {

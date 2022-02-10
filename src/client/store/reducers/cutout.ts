@@ -12,6 +12,7 @@ const defaultState: CutoutState = {
   width: 0,
 }
 
+// eslint-disable-next-line @typescript-eslint/default-param-last
 export default (state: CutoutState = defaultState, action: actions.CutoutActions): CutoutState => {
   switch (action.type) {
     case actions.CUTOUT_UPDATE:

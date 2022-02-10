@@ -1,10 +1,10 @@
-import twitchie from '../../twitchie'
+import { type Dispatch } from 'redux'
 
-import { Dispatch } from 'redux'
+import twitchie from '../../twitchie'
 import { updateStreamInfoAction } from '../actions/stream'
 
 export default (dispatch: Dispatch) => {
-  twitchie.stream.info.on('change', info => {
+  twitchie.stream.info.on('change', (info) => {
     if (!info) {
       return
     }

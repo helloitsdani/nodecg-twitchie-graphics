@@ -8,6 +8,7 @@ const defaultState: BRBState = {
   message: undefined,
 }
 
+// eslint-disable-next-line @typescript-eslint/default-param-last
 export default (state: BRBState = defaultState, action: actions.BRBActions): BRBState => {
   switch (action.type) {
     case actions.BRB_UPDATE:

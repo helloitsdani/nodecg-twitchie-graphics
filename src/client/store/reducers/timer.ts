@@ -5,6 +5,7 @@ export type TimerState = Timer | null
 
 const defaultState: TimerState = null
 
+// eslint-disable-next-line @typescript-eslint/default-param-last
 export default (state: TimerState = defaultState, action: actions.TimerActions): TimerState => {
   switch (action.type) {
     case actions.TIMER_UPDATE:

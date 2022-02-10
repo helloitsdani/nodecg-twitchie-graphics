@@ -1,6 +1,12 @@
-import twitchie, { ChatActionPayload, ChatBanPayload, ChatMessagePayload, ChatTimeoutPayload } from 'nodecg-twitchie'
-import { Dispatch } from 'redux'
+import {
+  type ChatActionPayload,
+  type ChatBanPayload,
+  type ChatMessagePayload,
+  type ChatTimeoutPayload,
+} from 'nodecg-twitchie'
+import { type Dispatch } from 'redux'
 
+import twitchie from '../../twitchie'
 import { clearUserMessagesAction, getMessageAction, joinChannelAction } from '../actions/chat'
 
 export default (dispatch: Dispatch) => {

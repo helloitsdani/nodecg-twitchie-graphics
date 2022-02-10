@@ -1,4 +1,9 @@
-import { ChatActionPayload, ChatBanPayload, ChatMessagePayload, ChatTimeoutPayload } from 'nodecg-twitchie'
+import {
+  type ChatActionPayload,
+  type ChatBanPayload,
+  type ChatMessagePayload,
+  type ChatTimeoutPayload,
+} from 'nodecg-twitchie'
 
 import { Notification } from '../../types'
 

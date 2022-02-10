@@ -1,4 +1,4 @@
-import { ChatMessage } from 'nodecg-twitchie'
+import { type ChatMessage } from 'nodecg-twitchie'
 
 import { ChatMessageTypeWithNotifications, ChatNotificationMessage } from '../../types'
 import * as actions from '../actions/chat'
@@ -15,14 +15,10 @@ const defaultState: ChatState = {
   messages: [],
 }
 
-const createNaughtyUserFilter = (user: string) => (message: ChatMessage | ChatNotificationMessage) => {
-  if (message.type === ChatMessageTypeWithNotifications.NOTIFICATION) {
-    return
-  }
+const createNaughtyUserFilter = (user: string) => (message: ChatMessage | ChatNotificationMessage) =>
+  message.type === ChatMessageTypeWithNotifications.NOTIFICATION ? user !== message.user : user !== message.user.name
 
-  return user !== message.user.name
-}
-
+// eslint-disable-next-line @typescript-eslint/default-param-last
 export default (state: ChatState = defaultState, action: actions.ChatActions): ChatState => {
   switch (action.type) {
     case actions.CHAT_NOTIFICATION:

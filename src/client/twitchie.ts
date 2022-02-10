@@ -1,4 +1,4 @@
-import twitchie, { createReplicant, Replicant, TwitchieClient } from 'nodecg-twitchie'
+import twitchie, { createReplicant, type Replicant, type TwitchieClient } from 'nodecg-twitchie'
 import { BRBStatus, SocialAccounts, Timer } from './types'
 
 interface TwitchieGraphicsClient extends TwitchieClient {

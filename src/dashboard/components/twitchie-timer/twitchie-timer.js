@@ -1,3 +1,5 @@
+/* global NodeCG */
+
 import * as Polymer from '@polymer/polymer'
 import '@polymer/iron-icon/iron-icon'
 import '@polymer/iron-icons/iron-icons'
@@ -7,12 +9,12 @@ import '@polymer/paper-checkbox/paper-checkbox'
 import '@polymer/paper-input/paper-input'
 import moment from 'moment'
 
-import './twitchie-countdown.js'
+import './twitchie-countdown'
 
 import '../twitchie-style/twitchie-style'
 
-const timer = nodecg.Replicant('graphics.timer', 'nodecg-twitchie')
-const brb = nodecg.Replicant('graphics.brb', 'nodecg-twitchie', { persistent: true })
+const timer = NodeCG.Replicant('graphics.timer', 'nodecg-twitchie')
+const brb = NodeCG.Replicant('graphics.brb', 'nodecg-twitchie', { persistent: true })
 
 const clearBrb = () => {
   const { message } = brb.value

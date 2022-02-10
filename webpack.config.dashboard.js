@@ -14,7 +14,7 @@ const pages = Object.keys(panels).map(
       filename: `${name}.html`,
       template: path.join(__dirname, 'src', 'dashboard', `panel-template.html`),
       chunks: ['vendor', 'shared', name],
-    })
+    }),
 )
 
 module.exports = {

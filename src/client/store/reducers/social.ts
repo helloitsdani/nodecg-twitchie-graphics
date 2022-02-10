@@ -5,6 +5,7 @@ export type SocialState = SocialAccounts
 
 const defaultState: SocialState = []
 
+// eslint-disable-next-line @typescript-eslint/default-param-last
 export default (state: SocialState = defaultState, action: actions.SocialActions): SocialState => {
   switch (action.type) {
     case actions.SOCIAL_UPDATE:
