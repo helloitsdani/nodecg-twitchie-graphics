@@ -10,8 +10,10 @@ export default (state: TimerState = defaultState, action: actions.TimerActions):
   switch (action.type) {
     case actions.TIMER_UPDATE:
       return action.payload
+
     case actions.TIMER_CLEAR:
       return defaultState
+
     default:
       return state
   }

@@ -24,6 +24,7 @@ export default (state: CutoutState = defaultState, action: actions.CutoutActions
         height: action.payload.height ?? state.height,
         width: action.payload.width ?? state.width,
       }
+
     default:
       return state
   }

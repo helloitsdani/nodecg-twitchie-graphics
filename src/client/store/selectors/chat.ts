@@ -4,6 +4,6 @@ const getChat = (state: OverlayState) => state.chat
 
 const getChatChannel = (state: OverlayState) => getChat(state).channel
 
-const getChatMessages = (state: OverlayState) => getChat(state).messages
+const getChatItems = (state: OverlayState) => getChat(state).items
 
-export { getChat, getChatChannel, getChatMessages }
+export { getChat, getChatChannel, getChatItems }

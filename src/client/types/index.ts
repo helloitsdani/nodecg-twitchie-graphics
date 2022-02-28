@@ -1,4 +1,5 @@
 import {
+  ChatMessage as TwitchieChatMessage,
   FollowInfo,
   NewChatterInfo,
   SubscriberCommunityGiftInfo,
@@ -19,36 +20,36 @@ export interface SocialAccount {
 export type SocialAccounts = SocialAccount[]
 
 export enum NotificationType {
-  SUBSCRIBER = 'subscriber',
-  SUBSCRIBER_GIFT = 'subscriber_gift',
-  COMMUNITY_GIFT = 'community_gift',
-  FOLLOWER = 'follower',
-  NEW_CHATTER = 'new_chatter',
+  subscriber = 'subscriber',
+  subscriber_gift = 'subscriber_gift',
+  community_gift = 'community_gift',
+  follower = 'follower',
+  new_chatter = 'new_chatter',
 }
 
 export type SubscriberNotification = {
   id?: string
-  topic: NotificationType.SUBSCRIBER
+  topic: NotificationType.subscriber
 } & SubscriberInfo
 
 export type SubscriberGiftNotification = {
   id?: string
-  topic: NotificationType.SUBSCRIBER_GIFT
+  topic: NotificationType.subscriber_gift
 } & SubscriberGiftInfo
 
 export type CommunityGiftNotification = {
   id?: string
-  topic: NotificationType.COMMUNITY_GIFT
+  topic: NotificationType.community_gift
 } & SubscriberCommunityGiftInfo
 
 export type FollowerNotification = {
   id?: string
-  topic: NotificationType.FOLLOWER
+  topic: NotificationType.follower
 } & FollowInfo
 
 export type NewChatterNotification = {
   id?: string
-  topic: NotificationType.NEW_CHATTER
+  topic: NotificationType.new_chatter
 } & NewChatterInfo
 
 export type Notification =
@@ -70,11 +71,15 @@ export interface Cutout {
 export type Timer = string
 
 export enum ChatMessageTypeWithNotifications {
-  ACTION = 'action',
-  MESSAGE = 'message',
-  NOTIFICATION = 'notification',
+  action = 'action',
+  message = 'message',
+  notification = 'notification',
 }
 
-export type ChatNotificationMessage = Notification & {
-  type: ChatMessageTypeWithNotifications.NOTIFICATION
+export type ChatNotification = Notification & {
+  type: ChatMessageTypeWithNotifications.notification
+}
+
+export type ChatMessage = Omit<TwitchieChatMessage, 'type'> & {
+  type: ChatMessageTypeWithNotifications.message | ChatMessageTypeWithNotifications.action
 }

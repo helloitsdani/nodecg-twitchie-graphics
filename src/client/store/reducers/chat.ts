@@ -1,34 +1,32 @@
-import { type ChatMessage } from 'nodecg-twitchie'
-
-import { ChatMessageTypeWithNotifications, ChatNotificationMessage, NotificationType } from '../../types'
+import { ChatMessageTypeWithNotifications, ChatMessage, ChatNotification, NotificationType } from '../../types'
 import * as actions from '../actions/chat'
 
 let id = 0
 
 export interface ChatState {
   channel: string
-  messages: (ChatMessage | ChatNotificationMessage)[]
+  items: (ChatMessage | ChatNotification)[]
 }
 
 const defaultState: ChatState = {
   channel: '',
-  messages: [],
+  items: [],
 }
 
-const createNaughtyUserFilter = (user: string) => (message: ChatMessage | ChatNotificationMessage) => {
-  if (message.type !== ChatMessageTypeWithNotifications.NOTIFICATION) {
+const createNaughtyUserFilter = (user: string) => (message: ChatMessage | ChatNotification) => {
+  if (message.type !== ChatMessageTypeWithNotifications.notification) {
     return user !== message.user.name
   }
 
-  if (message.topic === NotificationType.COMMUNITY_GIFT) {
+  if (message.topic === NotificationType.community_gift) {
     return user !== message.gifter
   }
 
-  if (message.topic === NotificationType.SUBSCRIBER_GIFT) {
+  if (message.topic === NotificationType.subscriber_gift) {
     return user !== message.name && user !== message.gifter
   }
 
-  if (message.topic === NotificationType.FOLLOWER) {
+  if (message.topic === NotificationType.follower) {
     return user !== message.from_name
   }
 
@@ -43,12 +41,12 @@ export default (state: ChatState = defaultState, action: actions.ChatActions): C
 
       return {
         ...state,
-        messages: [
-          ...state.messages,
+        items: [
+          ...state.items,
           {
             ...action.payload,
             id: `notification-${action.payload.id ?? id}`,
-            type: ChatMessageTypeWithNotifications.NOTIFICATION,
+            type: ChatMessageTypeWithNotifications.notification,
           },
         ],
       }
@@ -58,11 +56,12 @@ export default (state: ChatState = defaultState, action: actions.ChatActions): C
 
       return {
         ...state,
-        messages: [
-          ...state.messages,
+        items: [
+          ...state.items,
           {
             ...action.payload.message,
             id: `message-${action.payload.message.id ?? id}`,
+            type: ChatMessageTypeWithNotifications[action.payload.message.type],
           },
         ],
       }
@@ -70,20 +69,20 @@ export default (state: ChatState = defaultState, action: actions.ChatActions): C
     case actions.CHAT_REMOVE_MESSAGE:
       return {
         ...state,
-        messages: state.messages.filter((message) => message.id !== action.payload.messageId),
+        items: state.items.filter((message) => message.id !== action.payload.messageId),
       }
 
     case actions.CHAT_CLEAR_USER_MESSAGES:
       return {
         ...state,
-        messages: state.messages.filter(createNaughtyUserFilter(action.payload.user)),
+        items: state.items.filter(createNaughtyUserFilter(action.payload.user)),
       }
 
     case actions.CHAT_JOIN_CHANNEL:
       return action.payload !== state.channel
         ? {
             channel: action.payload,
-            messages: [],
+            items: [],
           }
         : state
 

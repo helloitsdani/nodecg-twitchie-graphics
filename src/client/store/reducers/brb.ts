@@ -16,6 +16,7 @@ export default (state: BRBState = defaultState, action: actions.BRBActions): BRB
         away: !!action.payload.away,
         message: action.payload.message,
       }
+
     default:
       return state
   }

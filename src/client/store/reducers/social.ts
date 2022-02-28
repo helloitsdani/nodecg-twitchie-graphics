@@ -10,6 +10,7 @@ export default (state: SocialState = defaultState, action: actions.SocialActions
   switch (action.type) {
     case actions.SOCIAL_UPDATE:
       return action.payload ? action.payload : []
+
     default:
       return state
   }

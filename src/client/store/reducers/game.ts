@@ -14,6 +14,7 @@ export default (state: GameState = defaultState, action: actions.GameActions): G
   switch (action.type) {
     case actions.GAME_UPDATE:
       return action.payload ? action.payload : defaultState
+
     default:
       return state
   }

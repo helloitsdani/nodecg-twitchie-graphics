@@ -11,6 +11,7 @@ export default (state: StreamState = defaultState, action: actions.StreamActions
   switch (action.type) {
     case actions.STREAM_UPDATE:
       return action.payload
+
     default:
       return state
   }

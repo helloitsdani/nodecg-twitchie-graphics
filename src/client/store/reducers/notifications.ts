@@ -22,8 +22,10 @@ export default (state: NotificationsState = defaultState, action: actions.Notifi
           id: `notification-${id}`,
         },
       ]
+
     case actions.CLEAR_NOTIFICATION:
       return state.filter(createNotificationFilter(action.payload))
+
     default:
       return state
   }
