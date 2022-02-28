@@ -47,20 +47,22 @@ export default (state: ChatState = defaultState, action: actions.ChatActions): C
           ...state.messages,
           {
             ...action.payload,
-            id: `notification-${id}`,
+            id: `notification-${action.payload.id ?? id}`,
             type: ChatMessageTypeWithNotifications.NOTIFICATION,
           },
         ],
       }
 
     case actions.CHAT_MESSAGE:
+      id += 1
+
       return {
         ...state,
         messages: [
           ...state.messages,
           {
             ...action.payload.message,
-            id: `message-${id}`,
+            id: `message-${action.payload.message.id ?? id}`,
           },
         ],
       }
