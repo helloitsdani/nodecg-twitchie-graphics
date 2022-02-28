@@ -9,7 +9,7 @@ const panels = {
 }
 
 const pages = Object.keys(panels).map(
-  name =>
+  (name) =>
     new HtmlWebpackPlugin({
       filename: `${name}.html`,
       template: path.join(__dirname, 'src', 'dashboard', `panel-template.html`),
@@ -27,15 +27,8 @@ module.exports = {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendor',
           chunks: 'all',
-          priority: 1,
-        },
-        shared: {
-          test: /\.s?js$/,
           minSize: 0,
           minChunks: 2,
-          name: 'shared',
-          chunks: 'all',
-          priority: 0,
         },
       },
     },

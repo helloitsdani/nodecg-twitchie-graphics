@@ -1,6 +1,6 @@
 import { type ChatMessage } from 'nodecg-twitchie'
 
-import { ChatMessageTypeWithNotifications, ChatNotificationMessage } from '../../types'
+import { ChatMessageTypeWithNotifications, ChatNotificationMessage, NotificationType } from '../../types'
 import * as actions from '../actions/chat'
 
 let id = 0
@@ -15,8 +15,25 @@ const defaultState: ChatState = {
   messages: [],
 }
 
-const createNaughtyUserFilter = (user: string) => (message: ChatMessage | ChatNotificationMessage) =>
-  message.type === ChatMessageTypeWithNotifications.NOTIFICATION ? user !== message.user : user !== message.user.name
+const createNaughtyUserFilter = (user: string) => (message: ChatMessage | ChatNotificationMessage) => {
+  if (message.type !== ChatMessageTypeWithNotifications.NOTIFICATION) {
+    return user !== message.user.name
+  }
+
+  if (message.topic === NotificationType.COMMUNITY_GIFT) {
+    return user !== message.gifter
+  }
+
+  if (message.topic === NotificationType.SUBSCRIBER_GIFT) {
+    return user !== message.name && user !== message.gifter
+  }
+
+  if (message.topic === NotificationType.FOLLOWER) {
+    return user !== message.from_name
+  }
+
+  return user !== message.name
+}
 
 // eslint-disable-next-line @typescript-eslint/default-param-last
 export default (state: ChatState = defaultState, action: actions.ChatActions): ChatState => {
@@ -30,14 +47,13 @@ export default (state: ChatState = defaultState, action: actions.ChatActions): C
           ...state.messages,
           {
             ...action.payload,
-            type: ChatMessageTypeWithNotifications.NOTIFICATION,
             id: `notification-${id}`,
+            type: ChatMessageTypeWithNotifications.NOTIFICATION,
           },
         ],
       }
-    case actions.CHAT_MESSAGE:
-      id += 1
 
+    case actions.CHAT_MESSAGE:
       return {
         ...state,
         messages: [
@@ -48,11 +64,19 @@ export default (state: ChatState = defaultState, action: actions.ChatActions): C
           },
         ],
       }
+
+    case actions.CHAT_REMOVE_MESSAGE:
+      return {
+        ...state,
+        messages: state.messages.filter((message) => message.id !== action.payload.messageId),
+      }
+
     case actions.CHAT_CLEAR_USER_MESSAGES:
       return {
         ...state,
         messages: state.messages.filter(createNaughtyUserFilter(action.payload.user)),
       }
+
     case actions.CHAT_JOIN_CHANNEL:
       return action.payload !== state.channel
         ? {
@@ -60,6 +84,7 @@ export default (state: ChatState = defaultState, action: actions.ChatActions): C
             messages: [],
           }
         : state
+
     default:
       return state
   }

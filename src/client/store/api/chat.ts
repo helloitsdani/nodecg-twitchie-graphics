@@ -1,4 +1,5 @@
 import {
+  ChatRemoveMessagePayload,
   type ChatActionPayload,
   type ChatBanPayload,
   type ChatMessagePayload,
@@ -7,7 +8,7 @@ import {
 import { type Dispatch } from 'redux'
 
 import twitchie from '../../twitchie'
-import { clearUserMessagesAction, getMessageAction, joinChannelAction } from '../actions/chat'
+import { clearUserMessagesAction, getMessageAction, joinChannelAction, removeMessageAction } from '../actions/chat'
 
 export default (dispatch: Dispatch) => {
   twitchie.channel.id.on('change', (channel, oldChannel) => {
@@ -22,6 +23,10 @@ export default (dispatch: Dispatch) => {
     dispatch(joinChannelAction(channel))
   })
 
+  const dispatchRemoveMessage = (modAction: ChatRemoveMessagePayload) => {
+    dispatch(removeMessageAction(modAction))
+  }
+
   const dispatchClearUserMessage = (modAction: ChatBanPayload | ChatTimeoutPayload) => {
     dispatch(clearUserMessagesAction(modAction))
   }
@@ -33,6 +38,7 @@ export default (dispatch: Dispatch) => {
   twitchie.on('chat.action', dispatchChatMessage)
   twitchie.on('chat.message', dispatchChatMessage)
 
+  twitchie.on('chat.removeMessage', dispatchRemoveMessage)
   twitchie.on('chat.ban', dispatchClearUserMessage)
   twitchie.on('chat.timeout', dispatchClearUserMessage)
 }

@@ -1,4 +1,5 @@
 import {
+  type ChatRemoveMessagePayload,
   type ChatActionPayload,
   type ChatBanPayload,
   type ChatMessagePayload,
@@ -10,6 +11,7 @@ import { Notification } from '../../types'
 export const CHAT_MESSAGE = 'chat/MESSAGE'
 export const CHAT_NOTIFICATION = 'chat/NOTIFICATION'
 export const CHAT_JOIN_CHANNEL = 'chat/JOIN_CHANNEL'
+export const CHAT_REMOVE_MESSAGE = 'chat/REMOVE_MESSAGE'
 export const CHAT_CLEAR_USER_MESSAGES = 'chat/CLEAR_USER_MESSAGES'
 
 export interface GetMessageAction {
@@ -19,11 +21,7 @@ export interface GetMessageAction {
 
 export interface GetNotificationAction {
   type: typeof CHAT_NOTIFICATION
-  payload: {
-    user: string
-    topic: string
-    message: string
-  }
+  payload: Notification
 }
 
 export interface JoinChannelAction {
@@ -31,12 +29,22 @@ export interface JoinChannelAction {
   payload: string
 }
 
+export interface ChatRemoveMessageAction {
+  type: typeof CHAT_REMOVE_MESSAGE
+  payload: ChatRemoveMessagePayload
+}
+
 export interface ClearChatMessagesAction {
   type: typeof CHAT_CLEAR_USER_MESSAGES
   payload: ChatBanPayload | ChatTimeoutPayload
 }
 
-export type ChatActions = GetMessageAction | GetNotificationAction | JoinChannelAction | ClearChatMessagesAction
+export type ChatActions =
+  | GetMessageAction
+  | GetNotificationAction
+  | JoinChannelAction
+  | ChatRemoveMessageAction
+  | ClearChatMessagesAction
 
 export const getMessageAction = (message: ChatActionPayload | ChatMessagePayload): ChatActions => ({
   type: CHAT_MESSAGE,
@@ -51,6 +59,11 @@ export const getNotificationAction = (notification: Notification) => ({
 export const joinChannelAction = (channel: string): ChatActions => ({
   type: CHAT_JOIN_CHANNEL,
   payload: channel,
+})
+
+export const removeMessageAction = (modAction: ChatRemoveMessagePayload): ChatActions => ({
+  type: CHAT_REMOVE_MESSAGE,
+  payload: modAction,
 })
 
 export const clearUserMessagesAction = (modAction: ChatBanPayload | ChatTimeoutPayload): ChatActions => ({
