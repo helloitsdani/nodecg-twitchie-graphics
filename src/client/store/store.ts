@@ -1,41 +1,33 @@
-import {
-  applyMiddleware,
-  combineReducers,
-  compose,
-  createStore,
-  type Middleware,
-  type Reducer,
-  type Store,
-} from 'redux'
+import { SetState, GetState, Mutate, StoreApi } from 'zustand'
+import create from 'zustand/vanilla'
+import { devtools } from 'zustand/middleware'
 
-import bindDispatchToAPIEvents from './api'
-import * as defaultReducers from './reducers'
+import { TwitchieStore } from '../types'
 
-declare global {
-  interface Window {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any
-  }
+export const DEFAULT_STATE = {
+  brb: {
+    away: false,
+    message: undefined,
+  },
+  game: undefined,
+  social: [],
+  stream: undefined,
+  notifications: [],
+  chat: {
+    channel: undefined,
+    items: [],
+  },
 }
 
-const createTwitchieStore = (reducers?: Reducer, middleware?: Middleware[]): Store<defaultReducers.OverlayState> => {
-  const currentReducers = reducers
-    ? {
-        ...defaultReducers,
-        ...reducers,
-      }
-    : {
-        ...defaultReducers,
-      }
-
-  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-
-  const store = createStore(
-    combineReducers(currentReducers),
-    composeEnhancers(middleware ? applyMiddleware(...middleware) : applyMiddleware()),
-  )
-
-  bindDispatchToAPIEvents(store)
-  return store
-}
-
-export default createTwitchieStore
+export default create<
+  TwitchieStore,
+  SetState<TwitchieStore>,
+  GetState<TwitchieStore>,
+  Mutate<StoreApi<TwitchieStore>, [['zustand/devtools', never]]>
+>(
+  devtools(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    (_, __, ___) => DEFAULT_STATE,
+    { name: 'twitchie' },
+  ),
+)

@@ -1,4 +1,6 @@
-export * from './actions'
-export * from './selectors'
+import bindStoreToAPIEvents from './api'
+import store from './store'
 
-export { default as createTwitchieStore } from './store'
+bindStoreToAPIEvents(store)
+
+export default store

@@ -8,7 +8,7 @@ export default {
     format: 'esm',
     sourcemap: true,
   },
-  external: ['redux', 'nodecg-twitchie'],
+  external: ['immer', 'zustand', 'zustand/vanilla', 'zustand/middleware', 'nodecg-twitchie'],
   plugins: [
     typescript({
       declaration: true,

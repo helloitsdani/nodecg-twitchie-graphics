@@ -1,11 +1,10 @@
 import twitchie, { createReplicant, type Replicant, type TwitchieClient } from 'nodecg-twitchie'
-import { BRBStatus, SocialAccounts, Timer } from './types'
+import { BRBStatus, SocialAccount } from './types'
 
 interface TwitchieGraphicsClient extends TwitchieClient {
   graphics: {
     brb: Replicant<BRBStatus>
-    social: Replicant<SocialAccounts>
-    timer: Replicant<Timer>
+    social: Replicant<SocialAccount[]>
   }
 }
 
@@ -13,8 +12,7 @@ const twitchieGraphicsClient: TwitchieGraphicsClient = {
   ...twitchie,
   graphics: {
     brb: createReplicant<BRBStatus>('graphics.brb', { defaultValue: { away: false }, persistent: true }),
-    social: createReplicant<SocialAccounts>('graphics.social', { defaultValue: [], persistent: true }),
-    timer: createReplicant<Timer>('graphics.timer'),
+    social: createReplicant<SocialAccount[]>('graphics.social', { defaultValue: [], persistent: true }),
   },
 }
 

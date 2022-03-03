@@ -1,7 +1,9 @@
 import {
   ChatMessage as TwitchieChatMessage,
   FollowInfo,
+  GameInfo,
   NewChatterInfo,
+  StreamInfo,
   SubscriberCommunityGiftInfo,
   SubscriberGiftInfo,
   SubscriberInfo,
@@ -16,8 +18,6 @@ export interface SocialAccount {
   service: string
   username: string
 }
-
-export type SocialAccounts = SocialAccount[]
 
 export enum NotificationType {
   subscriber = 'subscriber',
@@ -59,17 +59,6 @@ export type Notification =
   | FollowerNotification
   | NewChatterNotification
 
-export interface Cutout {
-  top: number
-  left: number
-  bottom: number
-  right: number
-  height: number
-  width: number
-}
-
-export type Timer = string
-
 export enum ChatMessageTypeWithNotifications {
   action = 'action',
   message = 'message',
@@ -82,4 +71,16 @@ export type ChatNotification = Notification & {
 
 export type ChatMessage = Omit<TwitchieChatMessage, 'type'> & {
   type: ChatMessageTypeWithNotifications.message | ChatMessageTypeWithNotifications.action
+}
+
+export interface TwitchieStore {
+  brb: BRBStatus
+  game: GameInfo | undefined
+  social: SocialAccount[]
+  stream: StreamInfo | undefined
+  notifications: Notification[]
+  chat: {
+    channel: string | undefined
+    items: (ChatMessage | ChatNotification)[]
+  }
 }
