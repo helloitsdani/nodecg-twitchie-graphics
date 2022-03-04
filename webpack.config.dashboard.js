@@ -1,25 +1,42 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
+const package = require('./package.json')
+
+const { ESBuildMinifyPlugin } = require('esbuild-loader')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const panels = {
-  brb: './src/dashboard/scripts/brb.js',
-  social: './src/dashboard/scripts/social.js',
-  timer: './src/dashboard/scripts/timer.js',
+const entryPoints = package.nodecg.dashboardPanels.reduce((entries, panel) => {
+  const name = panel.file.split('.')[0]
+
+  return {
+    ...entries,
+    [name]: `./src/dashboard/scripts/${name}.js`,
+  }
+}, {})
+
+const createTemplate = (name) =>
+  new HtmlWebpackPlugin({
+    filename: `${name}.html`,
+    chunks: ['vendor', name],
+    template: './src/dashboard/panel-template.html',
+  })
+
+const config = {
+  entry: entryPoints,
+
+  output: {
+    filename: '[name].js',
+    path: path.resolve('./dashboard'),
+  },
+
+  plugins: [new CleanWebpackPlugin(), ...Object.keys(entryPoints).map(createTemplate)],
 }
 
-const pages = Object.keys(panels).map(
-  (name) =>
-    new HtmlWebpackPlugin({
-      filename: `${name}.html`,
-      template: path.join(__dirname, 'src', 'dashboard', `panel-template.html`),
-      chunks: ['vendor', 'shared', name],
-    }),
-)
-
-module.exports = {
+const production = {
+  ...config,
   mode: 'production',
-  entry: panels,
+
   optimization: {
     splitChunks: {
       cacheGroups: {
@@ -32,10 +49,19 @@ module.exports = {
         },
       },
     },
-  },
-  plugins: [new CleanWebpackPlugin(), ...pages],
-  output: {
-    filename: '[name].js',
-    path: path.join(__dirname, 'dashboard'),
+
+    minimizer: [
+      new ESBuildMinifyPlugin({
+        target: 'es2015',
+        css: true,
+      }),
+    ],
   },
 }
+
+const development = {
+  ...config,
+  mode: 'development',
+}
+
+module.exports = process.env.NODE_ENV === 'development' ? development : production

@@ -83,4 +83,10 @@ export interface TwitchieStore {
     channel: string | undefined
     items: (ChatMessage | ChatNotification)[]
   }
+
+  addChatItem: (newItem: ChatMessage | ChatNotification) => void
+  removeChatItemById: (badId: string) => void
+  removeChatItemByName: (naughtyUsername: string) => void
+  addNotification: (newNotification: Notification) => void
+  removeNotificationById: (badId: string) => void
 }

@@ -1,35 +1,8 @@
 import { StoreApi } from 'zustand'
-import { produce } from 'immer'
 
-import {
-  NotificationType,
-  ChatMessageTypeWithNotifications,
-  ChatMessage,
-  ChatNotification,
-  TwitchieStore,
-} from '../types'
+import { NotificationType, ChatMessageTypeWithNotifications, TwitchieStore } from '../types'
 import twitchie from '../twitchie'
 import { DEFAULT_STATE } from './store'
-
-const createNaughtyUserFilter = (user: string) => (message: ChatMessage | ChatNotification) => {
-  if (message.type !== ChatMessageTypeWithNotifications.notification) {
-    return user !== message.user.name
-  }
-
-  if (message.topic === NotificationType.community_gift) {
-    return user !== message.gifter
-  }
-
-  if (message.topic === NotificationType.subscriber_gift) {
-    return user !== message.name && user !== message.gifter
-  }
-
-  if (message.topic === NotificationType.follower) {
-    return user !== message.from_name
-  }
-
-  return user !== message.name
-}
 
 const bindStoreToAPIEvents = (store: StoreApi<TwitchieStore>) => {
   let eventId = 0
@@ -65,113 +38,73 @@ const bindStoreToAPIEvents = (store: StoreApi<TwitchieStore>) => {
   })
 
   twitchie.on('chat.message', ({ message: newMessage }) => {
-    store.setState(
-      produce((state: TwitchieStore) => {
-        state.chat.items.push({
-          ...newMessage,
-          id: `message-${newMessage.id ?? ++eventId}`,
-          type: ChatMessageTypeWithNotifications.message,
-        })
-      }),
-    )
+    store.getState().addChatItem({
+      ...newMessage,
+      id: `message-${newMessage.id ?? ++eventId}`,
+      type: ChatMessageTypeWithNotifications.message,
+    })
   })
 
   twitchie.on('chat.action', ({ message: newMessage }) => {
-    store.setState(
-      produce((state: TwitchieStore) => {
-        state.chat.items.push({
-          ...newMessage,
-          id: `message-${newMessage.id ?? ++eventId}`,
-          type: ChatMessageTypeWithNotifications.action,
-        })
-      }),
-    )
+    store.getState().addChatItem({
+      ...newMessage,
+      id: `message-${newMessage.id ?? ++eventId}`,
+      type: ChatMessageTypeWithNotifications.action,
+    })
   })
 
   /* Chat Moderation */
   twitchie.on('chat.removeMessage', ({ messageId }) => {
-    store.setState(
-      produce((state: TwitchieStore) => {
-        state.chat.items = state.chat.items.filter((message) => message.id !== messageId)
-      }),
-    )
+    store.getState().removeChatItemById(messageId)
   })
 
   twitchie.on('chat.ban', ({ user }) => {
-    store.setState(
-      produce((state: TwitchieStore) => {
-        state.chat.items = state.chat.items.filter(createNaughtyUserFilter(user))
-      }),
-    )
+    store.getState().removeChatItemByName(user)
   })
 
   twitchie.on('chat.timeout', ({ user }) => {
-    store.setState(
-      produce((state: TwitchieStore) => {
-        state.chat.items = state.chat.items.filter(createNaughtyUserFilter(user))
-      }),
-    )
+    store.getState().removeChatItemByName(user)
   })
 
   /* Notifications */
   twitchie.on('user.new', (newChatter) => {
-    store.setState(
-      produce((state: TwitchieStore) => {
-        state.notifications.push({
-          id: `notification-${++eventId}`,
-          topic: NotificationType.new_chatter,
-          ...newChatter,
-        })
-      }),
-    )
+    store.getState().addNotification({
+      ...newChatter,
+      id: `notification-${++eventId}`,
+      topic: NotificationType.new_chatter,
+    })
   })
 
   twitchie.on('user.follower', (follower) => {
-    store.setState(
-      produce((state: TwitchieStore) => {
-        state.notifications.push({
-          id: `notification-${++eventId}`,
-          topic: NotificationType.follower,
-          ...follower,
-        })
-      }),
-    )
+    store.getState().addNotification({
+      ...follower,
+      id: `notification-${++eventId}`,
+      topic: NotificationType.follower,
+    })
   })
 
   twitchie.on('user.subscription', (subscriber) => {
-    store.setState(
-      produce((state: TwitchieStore) => {
-        state.notifications.push({
-          id: `notification-${++eventId}`,
-          topic: NotificationType.subscriber,
-          ...subscriber,
-        })
-      }),
-    )
+    store.getState().addNotification({
+      ...subscriber,
+      id: `notification-${++eventId}`,
+      topic: NotificationType.subscriber,
+    })
   })
 
   twitchie.on('user.subscription.gift', (gift) => {
-    store.setState(
-      produce((state: TwitchieStore) => {
-        state.notifications.push({
-          id: `notification-${++eventId}`,
-          topic: NotificationType.subscriber_gift,
-          ...gift,
-        })
-      }),
-    )
+    store.getState().addNotification({
+      ...gift,
+      id: `notification-${++eventId}`,
+      topic: NotificationType.subscriber_gift,
+    })
   })
 
   twitchie.on('user.subscription.community', (gifts) => {
-    store.setState(
-      produce((state: TwitchieStore) => {
-        state.notifications.push({
-          id: `notification-${++eventId}`,
-          topic: NotificationType.community_gift,
-          ...gifts,
-        })
-      }),
-    )
+    store.getState().addNotification({
+      ...gifts,
+      id: `notification-${++eventId}`,
+      topic: NotificationType.community_gift,
+    })
   })
 }
 
