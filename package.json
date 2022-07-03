@@ -31,28 +31,6 @@
   "bugs": {
     "url": "https://github.com/helloitsdan/nodecg-twitchie-graphics/issues"
   },
-  "devDependencies": {
-    "@rollup/plugin-typescript": "^8.3.0",
-    "@typescript-eslint/eslint-plugin": "^5.11.0",
-    "@typescript-eslint/parser": "^5.11.0",
-    "clean-webpack-plugin": "^4.0.0",
-    "eslint": "^8.8.0",
-    "eslint-config-airbnb-typescript": "^16.1.0",
-    "eslint-config-prettier": "^8.3.0",
-    "esbuild-loader": "2.18.0",
-    "html-webpack-plugin": "^5.5.0",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.3.3",
-    "prettier": "^2.5.1",
-    "rollup": "^2.67.2",
-    "stylelint": "^14.5.0",
-    "stylelint-config-recommended-scss": "^5.0.2",
-    "stylelint-scss": "^4.1.0",
-    "tslib": "^2.3.1",
-    "typescript": "^4.5.5",
-    "webpack": "^5.68.0",
-    "webpack-cli": "^4.9.2"
-  },
   "files": [
     "dashboard",
     "extension",
@@ -63,10 +41,10 @@
     "compatibleRange": ">=1.6.1",
     "dashboardPanels": [
       {
-        "name": "brb",
-        "title": "BRB!",
+        "name": "stream-status",
+        "title": "Stream Status",
         "width": 2,
-        "file": "brb.html",
+        "file": "stream-status.html",
         "headerColor": "#6441A4"
       },
       {
@@ -90,11 +68,36 @@
     "@polymer/paper-icon-button": "^3.0.2",
     "@polymer/paper-input": "^3.0.0",
     "@polymer/polymer": "^3.3.1",
-    "moment": "^2.24.0",
-    "nodecg-twitchie": "^3.2.1"
+    "moment": "^2.24.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.11.0",
+    "@typescript-eslint/parser": "^5.11.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "eslint": "^8.8.0",
+    "eslint-config-airbnb-typescript": "^16.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "esbuild-loader": "2.18.0",
+    "html-webpack-plugin": "^5.5.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.3",
+    "prettier": "^2.5.1",
+    "rollup": "^2.67.2",
+    "stylelint": "^14.5.0",
+    "stylelint-config-recommended-scss": "^5.0.2",
+    "stylelint-scss": "^4.1.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.5",
+    "webpack": "^5.68.0",
+    "webpack-cli": "^4.9.2",
+    "immer": "^9.0.12",
+    "zustand": "^3.7.1",
+    "nodecg-twitchie": "^3.8.1"
   },
   "peerDependencies": {
     "immer": "^9.0.12",
-    "zustand": "^3.7.1"
+    "zustand": "^3.7.1",
+    "nodecg-twitchie": "^3.8.1"
   }
 }

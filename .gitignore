@@ -3,3 +3,4 @@
 /dashboard/
 /.cache/
 /.parcel-cache/
+.DS_Store

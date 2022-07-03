@@ -9,6 +9,12 @@ styleElement.innerHTML = `<template>
       --primary-color: #6441a4;
     }
 
+    hr {
+      opacity: 0.5;
+      border: 0;
+      border-bottom: 1px solid var(--secondary-text-color);
+    }
+
     h1,
     h2,
     h3,
@@ -36,7 +42,7 @@ styleElement.innerHTML = `<template>
     }
 
     paper-icon-button {
-      color: #ffffff;
+      color: #6441a4;
       width: 1.5em;
       height: 1.5em;
       padding: 0;
@@ -47,6 +53,11 @@ styleElement.innerHTML = `<template>
       --paper-spinner-layer-2-color: var(--paper-spinner-layer-1-color);
       --paper-spinner-layer-3-color: var(--paper-spinner-layer-1-color);
       --paper-spinner-layer-4-color: var(--paper-spinner-layer-1-color);
+    }
+
+    paper-listbox {
+      --paper-listbox-background-color: var(--background-color);
+      --paper-listbox-color: var(--primary-text-color);
     }
 
     paper-checkbox {
@@ -85,6 +96,7 @@ styleElement.innerHTML = `<template>
 
     .c-loading {
       position: absolute;
+      z-index: 99;
       top: 0;
       left: 0;
       width: 100%;

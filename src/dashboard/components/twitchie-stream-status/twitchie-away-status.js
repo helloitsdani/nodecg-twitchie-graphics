@@ -11,19 +11,19 @@ import '../twitchie-style/twitchie-style'
 
 const brb = NodeCG.Replicant('graphics.brb', 'nodecg-twitchie', { persistent: true })
 
-class TwitchieBRBStatus extends Polymer.PolymerElement {
+class TwitchieAwayStatus extends Polymer.PolymerElement {
   static get template() {
     return Polymer.html`
     <style include="twitchie-style"></style>
 
     <div class="c-field-group">
       <paper-checkbox checked="{{isAway}}">
-        Show BRB screen?
+        Away?
       </paper-checkbox>
     </div>
 
     <div class="c-field-group">
-      <paper-input class="c-field-group__field c-flush-input" label="Message" value="{{message}}"></paper-input>
+      <paper-input class="c-field-group__field c-flush-input" label="Away message" value="{{message}}"></paper-input>
     </div>
 
     <paper-button raised="" on-tap="update">
@@ -34,7 +34,7 @@ class TwitchieBRBStatus extends Polymer.PolymerElement {
   }
 
   static get is() {
-    return 'twitchie-brb-status'
+    return 'twitchie-away-status'
   }
 
   static get properties() {
@@ -61,7 +61,7 @@ class TwitchieBRBStatus extends Polymer.PolymerElement {
     super.ready()
 
     NodeCG.waitForReplicants(brb).then(() => {
-      brb.on('change', newVal => {
+      brb.on('change', (newVal) => {
         this.isAway = newVal.away
         this.message = newVal.message
       })
@@ -69,4 +69,4 @@ class TwitchieBRBStatus extends Polymer.PolymerElement {
   }
 }
 
-customElements.define(TwitchieBRBStatus.is, TwitchieBRBStatus)
+customElements.define(TwitchieAwayStatus.is, TwitchieAwayStatus)
