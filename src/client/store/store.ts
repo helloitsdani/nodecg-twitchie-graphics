@@ -20,6 +20,7 @@ export const DEFAULT_STATE = {
   game: undefined,
   social: [],
   stream: undefined,
+  status: undefined,
   notifications: [],
   chat: {
     channel: undefined,

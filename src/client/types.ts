@@ -78,6 +78,7 @@ export interface TwitchieStore {
   game: GameInfo | undefined
   social: SocialAccount[]
   stream: StreamInfo | undefined
+  status: string | undefined
   notifications: Notification[]
   chat: {
     channel: string | undefined

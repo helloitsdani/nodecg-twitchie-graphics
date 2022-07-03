@@ -23,6 +23,10 @@ const bindStoreToAPIEvents = (store: StoreApi<TwitchieStore>) => {
     store.setState({ stream: newStream ?? DEFAULT_STATE.stream })
   })
 
+  twitchie.stream.status.on('change', (newStatus) => {
+    store.setState({ status: newStatus ?? DEFAULT_STATE.status })
+  })
+
   /* Chat */
   twitchie.channel.id.on('change', (channel, oldChannel) => {
     if (channel === oldChannel) {
