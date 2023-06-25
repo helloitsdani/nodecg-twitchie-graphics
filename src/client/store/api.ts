@@ -71,7 +71,7 @@ const bindStoreToAPIEvents = (store: StoreApi<TwitchieStore>) => {
   })
 
   /* Notifications */
-  twitchie.on('user.new', (newChatter) => {
+  twitchie.on('ritual.new', (newChatter) => {
     store.getState().addNotification({
       ...newChatter,
       id: `notification-${++eventId}`,
@@ -100,14 +100,6 @@ const bindStoreToAPIEvents = (store: StoreApi<TwitchieStore>) => {
       ...gift,
       id: `notification-${++eventId}`,
       topic: NotificationType.subscriber_gift,
-    })
-  })
-
-  twitchie.on('user.subscription.community', (gifts) => {
-    store.getState().addNotification({
-      ...gifts,
-      id: `notification-${++eventId}`,
-      topic: NotificationType.community_gift,
     })
   })
 }

@@ -4,7 +4,6 @@ import {
   GameInfo,
   NewChatterInfo,
   StreamInfo,
-  SubscriberCommunityGiftInfo,
   SubscriberGiftInfo,
   SubscriberInfo,
 } from 'nodecg-twitchie'
@@ -22,7 +21,6 @@ export interface SocialAccount {
 export enum NotificationType {
   subscriber = 'subscriber',
   subscriber_gift = 'subscriber_gift',
-  community_gift = 'community_gift',
   follower = 'follower',
   new_chatter = 'new_chatter',
 }
@@ -37,11 +35,6 @@ export type SubscriberGiftNotification = {
   topic: NotificationType.subscriber_gift
 } & SubscriberGiftInfo
 
-export type CommunityGiftNotification = {
-  id?: string
-  topic: NotificationType.community_gift
-} & SubscriberCommunityGiftInfo
-
 export type FollowerNotification = {
   id?: string
   topic: NotificationType.follower
@@ -55,7 +48,6 @@ export type NewChatterNotification = {
 export type Notification =
   | SubscriberNotification
   | SubscriberGiftNotification
-  | CommunityGiftNotification
   | FollowerNotification
   | NewChatterNotification
 
