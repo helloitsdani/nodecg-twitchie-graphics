@@ -6,6 +6,9 @@ import {
   StreamInfo,
   SubscriberGiftInfo,
   SubscriberInfo,
+  PredictionInfo,
+  GoalInfo,
+  PollInfo,
 } from 'nodecg-twitchie'
 
 export interface BRBStatus {
@@ -23,6 +26,7 @@ export enum NotificationType {
   subscriber_gift = 'subscriber_gift',
   follower = 'follower',
   new_chatter = 'new_chatter',
+  generic = 'generic',
 }
 
 export type SubscriberNotification = {
@@ -45,11 +49,19 @@ export type NewChatterNotification = {
   topic: NotificationType.new_chatter
 } & NewChatterInfo
 
+export type GenericNotification = {
+  id?: string
+  topic: NotificationType.generic
+  subject: string
+  message: string
+}
+
 export type Notification =
   | SubscriberNotification
   | SubscriberGiftNotification
   | FollowerNotification
   | NewChatterNotification
+  | GenericNotification
 
 export enum ChatMessageTypeWithNotifications {
   action = 'action',
@@ -66,20 +78,26 @@ export type ChatMessage = Omit<TwitchieChatMessage, 'type'> & {
 }
 
 export interface TwitchieStore {
-  brb: BRBStatus
-  game: GameInfo | undefined
-  social: SocialAccount[]
   stream: StreamInfo | undefined
+  game: GameInfo | undefined
   status: string | undefined
-  notifications: Notification[]
+
+  brb: BRBStatus
+  social: SocialAccount[]
+
   chat: {
     channel: string | undefined
     items: (ChatMessage | ChatNotification)[]
   }
-
   addChatItem: (newItem: ChatMessage | ChatNotification) => void
   removeChatItemById: (badId: string) => void
   removeChatItemByName: (naughtyUsername: string) => void
+
+  notifications: Notification[]
   addNotification: (newNotification: Notification) => void
   removeNotificationById: (badId: string) => void
+
+  goal: GoalInfo
+  poll: PollInfo
+  prediction: PredictionInfo
 }
