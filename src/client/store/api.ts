@@ -71,7 +71,7 @@ const bindStoreToAPIEvents = (store: StoreApi<TwitchieStore>) => {
   })
 
   /* Notifications */
-  twitchie.on('user.new', (newChatter) => {
+  twitchie.on('ritual.new', (newChatter) => {
     store.getState().addNotification({
       ...newChatter,
       id: `notification-${++eventId}`,
@@ -103,12 +103,47 @@ const bindStoreToAPIEvents = (store: StoreApi<TwitchieStore>) => {
     })
   })
 
-  twitchie.on('user.subscription.community', (gifts) => {
-    store.getState().addNotification({
-      ...gifts,
-      id: `notification-${++eventId}`,
-      topic: NotificationType.community_gift,
-    })
+  /* Goals */
+  twitchie.on('goal.begin', (goal) => {
+    store.setState((state) => ({ ...state, goal }))
+  })
+
+  twitchie.on('goal.progress', (goal) => {
+    store.setState((state) => ({ ...state, goal }))
+  })
+
+  twitchie.on('goal.end', (goal) => {
+    store.setState((state) => ({ ...state, goal }))
+  })
+
+  /* Polls (rhymes with goals but is different) */
+  twitchie.on('poll.begin', (poll) => {
+    store.setState((state) => ({ ...state, poll }))
+  })
+
+  twitchie.on('poll.progress', (poll) => {
+    store.setState((state) => ({ ...state, poll }))
+  })
+
+  twitchie.on('poll.end', (poll) => {
+    store.setState((state) => ({ ...state, poll }))
+  })
+
+  /* Predictions */
+  twitchie.on('prediction.begin', (prediction) => {
+    store.setState((state) => ({ ...state, prediction }))
+  })
+
+  twitchie.on('prediction.progress', (prediction) => {
+    store.setState((state) => ({ ...state, prediction }))
+  })
+
+  twitchie.on('prediction.lock', (prediction) => {
+    store.setState((state) => ({ ...state, prediction }))
+  })
+
+  twitchie.on('prediction.end', (prediction) => {
+    store.setState((state) => ({ ...state, prediction }))
   })
 }
 

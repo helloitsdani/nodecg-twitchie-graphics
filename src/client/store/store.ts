@@ -1,5 +1,4 @@
-import { SetState, GetState, Mutate, StoreApi } from 'zustand'
-import create from 'zustand/vanilla'
+import { createStore } from 'zustand/vanilla'
 import { devtools } from 'zustand/middleware'
 import { produce } from 'immer'
 
@@ -26,40 +25,27 @@ export const DEFAULT_STATE = {
     channel: undefined,
     items: [],
   },
-}
+} as any as TwitchieStore
 
 const createNaughtyUserFilter = (user: string) => (message: ChatMessage | ChatNotification) => {
   if (message.type !== ChatMessageTypeWithNotifications.notification) {
-    return user !== message.user.name
-  }
-
-  if (message.topic === NotificationType.community_gift) {
-    return user !== message.gifter
+    return user !== message.user.name && user !== message.user.username
   }
 
   if (message.topic === NotificationType.subscriber_gift) {
-    return user !== message.name && user !== message.gifter
+    return user !== message.gifterName && user !== message.gifterDisplayName
   }
 
   if (message.topic === NotificationType.follower) {
-    return user !== message.from_name
+    return user !== message.userName && user !== message.userDisplayName
   }
 
-  return user !== message.name
+  return true
 }
 
-// it seems to be a known issue that typing gets really
-// weird when using zustand's devtools--this is the closest
-// we can get, but it doesn't infer completely yet
-export default create<
-  TwitchieStore,
-  SetState<TwitchieStore>,
-  GetState<TwitchieStore>,
-  Mutate<StoreApi<TwitchieStore>, [['zustand/devtools', never]]>
->(
+export default createStore<TwitchieStore>()(
   devtools(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    (set, _, __) => ({
+    (set) => ({
       ...DEFAULT_STATE,
 
       addChatItem: (newItem: ChatMessage | ChatNotification) =>
