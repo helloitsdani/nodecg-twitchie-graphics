@@ -98,6 +98,6 @@
   "peerDependencies": {
     "immer": "^9.0.12",
     "nodecg-twitchie": "^3.10.0",
-    "zustand": "^3.7.1"
+    "zustand": "^4.3.9"
   }
 }
